@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<title>css sprites2css</title>
+
+<script>
+	var styling = false;
+
+	var sprites_src = '../i/ramail-icons.png';
+	var sprites_width = 20;
+	var sprites_height = 20;
+
+	var sprites_list = [
+		,["attach_file",5,125]
+		,["attention", 5, 155]
+		,["key", 5, 305]
+		,["key-inactive", 5, 275]
+		,["contact",5,335]
+		//,["contact-inactive",5,335]
+
+		,["folder", 5, 395]
+		,["folder-open", 5, 365]
+		,["folders", 5, 424]
+
+		,["tree_close", 5, 1475]
+		,["tree_open", 5, 485]
+
+		,["in_new_window",6,546]
+		,["remove",5,1945]
+		,["remove-inactive",5,1905]
+		,["spam",5,635]
+		,["spam-inactive",5,605]
+
+		,["arrow_up",5,1685]
+		,["arrow_up-narrow",10,1685, 10, 20]
+		,["arrow_down",5,1595]
+		,["arrow_down-narrow",10,1595, 10, 20]
+		,["arrow_left",5,1625]
+		,["arrow_left-narrow",10,1625, 10, 20]
+		,["arrow_right",5,1655]
+		,["arrow_right-narrow",10,1655, 10, 20]
+
+		/*
+		,["other",5,1595]
+		,["other-narrow",10,1595, 10, 20]
+		*/
+
+
+		,["search",5,2665]
+		,["search-active",5,2695]
+		,["search-inactive",5,2635]
+
+		,["refresh",5,2875]
+		//,["refresh-inactive",5,2875]
+
+		,["reply",5,1145]
+		,["replyall",5,3385]
+		,["forward",5,965]
+
+		,["flag",5,1415]
+		,["flag-hover",5,1355]
+		,["flag-active",5,905]
+		,["flag-active_hover",5,875]
+
+		/*
+		,["flag_nohover",5,1415]
+		,["flag_nohover-active",5,905]
+		*/
+
+		,["print",5,1085]
+
+		,["msg_next",5,5]
+		,["msg_past",5,95]
+
+		,["preview",5,1025]
+		,["save_draft",5,725]
+
+		,["addr",5,335]
+		,["vkey",5,305]
+		,["edit",5,3055]
+		,["share",5,1835]
+		,["send_mail",5,1835]
+		,["feed",5,725]
+
+		,["munu_folder-open",5,1595]
+		,["munu_folder-close",5,1655]
+
+		,["plus",5,455]
+		,["ok",5,1715]
+
+		,["mobile",5,3505]
+
+		,["checkbox-active",5,1715]
+		,["checkbox-inactive",5,1745]
+
+		,["mail_read",5,1266]
+		,["mail_read:hover",5,1206]
+		,["mail_unread",5,1835]
+		,["mail_unread:hover",5,1445]
+
+		, ["settings",5,1505]
+		];
+
+
+	</script>
+
+<style type="text/css">
+	.img_sprit {float:left;margin:4px;border:1px solid #999;overflow: hidden;}
+	.xhover {border-color:#F00;}
+	#sprit_edit {float:left;margin:4px;border:1px solid #999;overflow: hidden;margin-left: 3em;background-position: 100px 100px;}
+	</style>
+</head>
+
+
+
+<body>
+<textarea spellcheck="false" autocomplete="off" style="border: 3px solid #000; height: 26em; width: 100%; z-index: 10000;" id="textarea"></textarea>
+<div style="line-height: 30px;padding: 1ex 0;"">
+	<div style="float: left;">
+		<input id="width_edit" type="text" value="" style="width:3em"/>
+		<input id="height_edit" type="text" value="" style="width:3em"/>
+		</div>
+	<div id="sprit_edit" style="width:20px;height:20px;"></div>
+	<input id="left_edit" type="text" value="" />
+	<input id="top_edit" type="text" value=""/>
+	<input id="name_edit" type="text" value=""/>
+	</div>
+
+
+
+<script>
+	function getSpritDataURL(img, sprit) {
+		var canvas = document.createElement('canvas');
+
+		canvas.width = sprit[3]||sprites_width;
+		canvas.height = sprit[4]||sprites_height;
+
+		var ctx = canvas.getContext("2d"), data;
+		ctx.drawImage(img, -sprit[1], -sprit[2]);
+
+		try{data = canvas.toDataURL()}catch(e){return};
+
+		return data;
+		};
+
+	function appendStyle(css_text) {
+		var d = document, s;
+
+		if (d.createStyleSheet) {
+			s = d.createStyleSheet();
+			try {s.cssText += css_text} catch(e){};
+			return s.owningElement;
+			};
+
+		(s = d.createElement('style')).type = 'text/css';
+		s.appendChild(d.createTextNode(css_text));
+		if (d = d.documentElement.firstChild) d.appendChild(s);
+		return s;
+		}
+
+	var imageSprit = new Image();
+	imageSprit.onload = function() {
+		if (this._isload) return;
+		this._isload = true;
+
+
+		var i = 0, a = sprites_list||false, l = a.length;
+		var text = '', data, d = document, hash_nodes={}, xhover, name, css, n;
+
+
+		for(;i < l; i++) {
+			x = a[i];
+			if (!x || !x[0]) continue;
+
+			data = getSpritDataURL(imageSprit, x);
+
+			if (!data) continue;
+
+			name = x[0];
+
+
+
+
+
+			if (xhover = name.indexOf(':hover') != -1) {
+				name = name.substring(0, name.indexOf(':'));
+
+				text += window.styling ? '.i-img--'+name+':hover, \n.i-hover_img:hover .i-img--'+name+', \n.i-hover_img--'+name+':hover .i-img--'+name+' {\n\tbackground-image:url('+JSON.stringify(data)+');\n\tbackground-repeat: no-repeat;\n\t}\n\n'
+					: '.i-img--'+name+':hover, .i-hover_img:hover .i-img--'+name+', .i-hover_img--'+name+':hover .i-img--'+name+' {background-image:url('+JSON.stringify(data)+');background-repeat: no-repeat;}\n'
+				}
+			else {
+				if (name.indexOf(':') != -1) continue;
+				text += window.styling ? '.i-img--'+name+', \n.i-hover_img:hover .i-img_hover--'+name+', \n.i-hover_img--'+name+':hover .i-img_hover--'+name+', \n.i-img_hover--'+name+':hover {\n\tbackground-image:url('+JSON.stringify(data)+');\n\tbackground-repeat: no-repeat;\n\t}\n\n'
+					: '.i-img--'+name+', .i-hover_img:hover .i-img_hover--'+name+', .i-hover_img--'+name+':hover .i-img_hover--'+name+', .i-img_hover--'+name+':hover {background-image:url('+JSON.stringify(data)+');background-repeat: no-repeat;}\n'
+				};
+
+
+			n = hash_nodes[name];
+			if (!n) {
+				n = d.createElement('div');
+				n.title = name;
+				n.className = 'img_sprit i-img--' + name;
+
+				n._s_name = name;
+
+				n._s_width = x[3]||sprites_width;
+				n._s_height = x[4]||sprites_height;
+
+				n._s_left = x[1]||0;
+				n._s_top = x[2]||0;
+
+				if (xhover) {
+					n._s_hover_left = x[1]||0;
+					n._s_hover_top = x[2]||0;
+					}
+				else {
+					n._s_real_left = x[1]||0;
+					n._s_real_top = x[2]||0;
+					}
+
+				n.style.width = (x[3]||sprites_width)+'px';
+				n.style.height = (x[4]||sprites_height)+'px';
+
+				hash_nodes[name] = n;
+
+				n.onclick = function() {
+					var left = this._s_real_left, top = this._s_real_top;
+					var n = document.getElementById('sprit_edit');
+
+					n.style.backgroundPosition = (-left)+'px '+(-top)+'px';
+					n.style.width = this._s_width+'px';
+					n.style.height = this._s_height+'px';
+
+					document.getElementById('width_edit').value = this._s_width;
+					document.getElementById('height_edit').value = this._s_height;
+
+					document.getElementById('left_edit').value = left;
+					document.getElementById('top_edit').value = top;
+
+					document.getElementById('name_edit').value = 'i-img--'+ this._s_name;
+					};
+
+				d.body.appendChild(n);
+				};
+
+			if (xhover) {
+				if (!n.xhover) {
+					n.xhover = true;
+					n.className += ' xhover';
+					};
+				};
+			};
+
+		document.getElementById('textarea').value = text;
+
+		appendStyle(text)
+		};
+
+
+
+	imageSprit.src = sprites_src;
+
+
+	new function() {
+		var node = document.getElementById('sprit_edit');
+		node.style.backgroundImage = 'url('+sprites_src+')';
+
+		var pLeft, pTop, pWidth, pHeight;
+		setInterval(function() {
+			var top, left, ch;
+
+			v = document.getElementById('left_edit').value - 0;
+			if (pLeft !== v && v === v) {
+				pLeft = v;
+				ch = true;
+				};
+
+			v = document.getElementById('top_edit').value - 0;
+			if (pTop !== v && v === v) {
+				pTop = v;
+				ch = true;
+				};
+
+			if (ch) {
+				node.style.backgroundPosition = (-pLeft)+'px '+(-pTop)+'px';
+				};
+
+			v = document.getElementById('width_edit').value;
+			if (v>0 && pWidth !== v) {
+				pWidth = v;
+				node.style.width = v+'px';
+				};
+
+			v = document.getElementById('height_edit').value;
+			if (v>0 && pHeight !== v) {
+				pHeight = v;
+				node.style.height = v+'px';
+				};
+			}, 700)
+		}
+
+</script>
+</html>
+
+
