@@ -52,14 +52,14 @@ use('/js/cram/tmpl/tmpl_topmenu.src.js'); // для шапки
 
 
 // ---- sidebar folders ----
-use('/js/cram/tmpl/tmpl_sidebar_folders.src.js');
-use('/js/cram/ui/ui_sidebar_folders.src.js');
+use('/js/mail_box/tmpl/tmpl_sidebar_folders.src.js');
+use('/js/mail_box/ui/ui_sidebar_folders.src.js');
 
 
 // ---- page mailbox ----
-use('/js/cram/mailbox.src.js');
-use('/js/cram/tmpl/tmpl_mailbox_page.src.js');
-use('/js/cram/ui/ui_mailbox_page.src.js');
+use('/js/mail_box/mailbox.src.js');
+use('/js/mail_box/tmpl/tmpl_mailbox_page.src.js');
+use('/js/mail_box/ui/ui_mailbox_page.src.js');
 
 //use('/js/cram/tmpl/tmpl_mailbox_sidebar.src.js');
 //use('/js/cram/ui/ui_mailbox_sidebar.src.js');
@@ -67,11 +67,11 @@ use('/js/cram/ui/ui_mailbox_page.src.js');
 
 
 /* page compose */
-use("/js/cram/tmpl/tmpl_page_compose.src.js"); // страница написания письма
-use("/js/cram/ui/ui_page_compose.src.js"); // страница написания письма
-use("/js/cram/tmpl/tmpl_compose_editor.src.js"); // страница написания письма
-use("/js/cram/ui/ui_compose_editor.src.js");  // код для редактора текста в написании письма
-use("/js/cram/compose.src.js");  // страничка #/compose
+use("/js/mail_new/tmpl/tmpl_page_compose.src.js"); // страница написания письма
+use("/js/mail_new/ui/ui_page_compose.src.js"); // страница написания письма
+use("/js/mail_new/tmpl/tmpl_compose_editor.src.js"); // страница написания письма
+use("/js/mail_new/ui/ui_compose_editor.src.js");  // код для редактора текста в написании письма
+use("/js/mail_new/compose.src.js");  // страничка #/compose
 
 
 
