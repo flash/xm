@@ -105,7 +105,7 @@ use('/js/calendar/rc_style.src.js');
 
 /* tiny_mce */
 use("/js/tiny_mce/tiny_mce_src.js");  // редактор
-use("/js/cram/wysiwyg_template_src.js");  // тема rmail
+use("/js/mail_new/wysiwyg_template_src.js");  // тема rmail
 
 //use("/js/tiny_mce/langs/en.js");  // локализация
 //use("/js/tiny_mce/themes/advanced/editor_template_src.js");  // тема advanced
