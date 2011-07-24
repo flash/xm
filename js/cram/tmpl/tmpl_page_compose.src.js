@@ -34,7 +34,7 @@ tmpl.compose_page = function(_, pr){
 	ns.sidebar = 'mailbox';
 
 
-	ns.page = _('ui:page'
+	ns.page = _('ui:page' 
 		, {
 			  extend: ns
 			//, pid: 'mailbox'
@@ -44,7 +44,7 @@ tmpl.compose_page = function(_, pr){
 			, css: 'b-page_compose'
 			, css_capion: 'b-page_compose-capion'
 
-			, head: true
+			, head: 'none'
 			, head_name: "Новое письмо"
 			}
 

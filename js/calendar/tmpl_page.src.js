@@ -10,7 +10,7 @@ tmpl.rc_page = function (_, pr) {
 	var ns = this;
 
 
-	ns.page = _('ui:page'
+	ns.page = _('ui:page' 
 		, {
 			extend: ns
 			, pid: 'rcalendar'
@@ -19,7 +19,7 @@ tmpl.rc_page = function (_, pr) {
 			, css: 'b-rcalendar'
 			, css_capion: 'b-rcalendar-capion'
 
-			, head: 'bottom'
+			, head: 'none'
 			//, head_name: "Календарь"
 			//, head_right: []
 		}
