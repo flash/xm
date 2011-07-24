@@ -13,7 +13,7 @@ rr.styles('tmpl:page'
 	, '.b-frame_body {padding: 10px 0;z-index:1;position:relative;top:0;left:0;background-color: #fff;}'
 	, '.b-frame_box {margin-left:210px;border-left:1px solid #CCCCCC;}'
 	, '.b-frame_pleft {position:absolute;width:200px;z-index:1;left:5px;}'
-//, '.b-frame_sidebar-box {}' 
+//, '.b-frame_sidebar-box {}'
 //, '.b-frame_footer {}'
 
 

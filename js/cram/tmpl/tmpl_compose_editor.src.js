@@ -36,7 +36,7 @@ rr.styles('wysiwyg_frame:rm_tinymce'
 
 	, 'blockquote span.quote {color: #f00;}'
 
-	, '.mceItemHiddenSpellWord {background:url("+(window._static_host||\'\')+"/i/chameleon/misspell.png) repeat-x bottom left; cursor:default;}'
+	, '.mceItemHiddenSpellWord {background:url("/i/chameleon/misspell.png") repeat-x bottom left; cursor:default;}'
 	);
 
 

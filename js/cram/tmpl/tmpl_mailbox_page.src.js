@@ -19,8 +19,6 @@ rr.styles('tmpl:maibox'
 );
 
 
-
-
 tmpl.mailbox_sidebar = function (_, pr) {
 	var ns = this;
 
@@ -70,18 +68,18 @@ tmpl.mailbox_page = function (_, pr) {
 						, _('ui:uButton', {
 							css: '',
 							css_icon: 'i-img--search',
-							//icon: 'only',    
+							//icon: 'only',
 
 							first: 'right',
 							group: 'right',
 							title: "Найти",
 							text: "Найти"
 						})
-					
+
 					]
 				}
 
-				, _('ui:uButton', { 
+				, _('ui:uButton', {
 					css: '',
 					css_icon: 'i-img--checkbox-inactive',
 					first: 'left',
@@ -141,7 +139,7 @@ tmpl.mailbox_page = function (_, pr) {
 			)
 		) //
 
-		, ns.dialog_bounce = _('ui:page_dialog', {css: 'b-page_mailbox-dialog_bounce', title: "Переадресация",  debug: false } //title: "Test", 
+		, ns.dialog_bounce = _('ui:page_dialog', {css: 'b-page_mailbox-dialog_bounce', title: "Переадресация",  debug: false } //title: "Test",
 			, _('div.b-page_mailbox-bounce_row'
 				, _('span.b-page_mailbox-bounce_title'
 					, ns.button_bounce_contacts = _('ui:uButton'
@@ -173,7 +171,7 @@ tmpl.mailbox_page = function (_, pr) {
 		) //
 
 
-		, ns.dialog_clear_folder = _('ui:page_dialog', {css: 'b-page_mailbox-dialog_clear_folder',  debug: false } //title: "Test", 
+		, ns.dialog_clear_folder = _('ui:page_dialog', {css: 'b-page_mailbox-dialog_clear_folder',  debug: false } //title: "Test",
 			, _('div.b-page_mailbox-clear_folder_wrap'
 				,"Вы уверены, что хотите удалить все письма из папки?"
 				, ns.clear_folder_go = _('ui:uButton'
@@ -316,10 +314,10 @@ tmpl.mailbox_listRow = function (_, p) {
 
 
 
-	ns.node = _('div.b-mbox_row' + (p.unread ? ' b-mbox_row--unread' : '') 
+	ns.node = _('div.b-mbox_row' + (p.unread ? ' b-mbox_row--unread' : '')
 		, {
 			css: p.attach ? 'b-mbox_row--has_attach' : ''
-			
+
 		}
 
 
@@ -359,8 +357,8 @@ tmpl.mailbox_listRow = function (_, p) {
 		, _('a.b-mbox_row-link no_underline' + (p.icon_domain ? ' b-mbox_row-link--icon_domain' : '')
 			, {
 				style: p.icon_domain ? {backgroundImage: 'url('+p.icon_domain+')'} : u,
-				onclick: function () { }, 
-				href: '#' 
+				onclick: function () { },
+				href: '#'
 			}
 			, _('span.b-mbox_row-from hover_underline' + (p.icon_domain ? ' b-mbox_row-from--icon_domain' : '')
 				, _.text(p.from || '')
