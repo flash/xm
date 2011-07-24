@@ -1,4 +1,4 @@
-/* BUILD DATE: Mon, 11 Jul 2011 14:14:03 GMT*/
+/* BUILD DATE: Sun, 24 Jul 2011 19:25:58 GMT*/
 
 
 /* URL: /js/cram/values.src.js */
@@ -3006,12 +3006,12 @@ rr.styles('tmpl:uButton'
 +'}'
 ,'.b-ubutton--icon-left .b-ubutton-wrap {margin-left: -2px;}'
 ,'.b-ubutton--icon-right .b-ubutton-wrap {margin-right: -2px;background-position:100% 50%;}'
-,'.b-ubutton--icon-only .b-ubutton-wrap {width:20px;}'
+,'.b-ubutton--icon-only .b-ubutton-wrap {width:20px;background-position: 50% 50%;}'
 ,'.b-ubutton--icon-none .b-ubutton-wrap {background-image:none !important;}'
 ,'.b-ubutton--icon-left .b-ubutton-text {margin-left: 21px;}'
 ,'.b-ubutton--icon-right .b-ubutton-text {margin-right:21px;}'
 ,'.b-ubutton--icon-only .b-ubutton-text {display:none;}'
-,'.b-ubutton:hover {border-color:#777;position:relative;}'
+,'.b-ubutton:hover {border-color:#777;position:relative;box-shadow:0 1px 2px -1px #FFFFFF inset, 0 0 0 2px rgba(70, 169, 232, 0.3)}'
 ,'.b-ubutton:focus {position:relative;}'
 ,'.b-ubutton--no_disabled:active, .b-ubutton--active {cursor:pointer;outline:0px solid;border-color:#555;'
 +(rr.Gecko?'-moz-box-shadow:0 1px 3px -1px #000 inset;background-image:-moz-linear-gradient(top, rgba(0,0,0,0.1), rgba(255,255,255,0));'
@@ -3030,6 +3030,7 @@ rr.styles('tmpl:uInput'
 :(rr.Opera||(rr.IE>=8))?'background-position:0;background-repeat:repeat-x;background-repeat:repeat-x;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAhCAYAAAARUmHFAAAALElEQVQokWP8////TAY0wMLAwPALm+AfylT+xCb4j162Ey84pG2nW3gOnO0AZeAjgXbrRFMAAAAASUVORK5CYII=);'
 :'')
 +'}'
+,'.b-uinput:hover {position:relative; z-index:1;box-shadow:0 1px 2px -1px #FFFFFF inset, 0 0 0 2px rgba(70, 169, 232, 0.3)}'
 ,'.b-uinput--g_left {margin-right:-1px;border-top-right-radius: 0;border-bottom-right-radius: 0;'
 +(rr.Gecko?'-moz-border-radius-topright: 0;-moz-border-radius-bottomright: 0;'
 :rr.WebKit?'-webkit-border-top-right-radius: 0;-webkit-border-bottom-right-radius: 0;'
@@ -3738,19 +3739,19 @@ rr.styles('tmpl:page'
 ,'.b-frame_box {margin-left:210px;border-left:1px solid #CCCCCC;}'
 ,'.b-frame_pleft {position:absolute;width:200px;z-index:1;left:5px;}'
 ,'.b-page {}'
-,'.b-page-head {color:#444444;font-size:18px;line-height:24px;padding:0 15px;margin-bottom:6px;white-space: nowrap;}'
-,'.b-page-head--bottom {margin-bottom:0;margin-top:10px;}'
+,'.b-page-head {background-color: #F3F3F3;color:#000;font-size:18px;line-height:24px;padding:4px 15px;margin-top:7px;margin-bottom:10px;white-space: nowrap;border-bottom: 1px solid #DDDDDD;border-top: 1px solid #DDDDDD;}'
+,'.b-page-head--none {height:0px;}'
 ,'.b-page-head_left {overflow: hidden;}'
 ,'.b-page-head_right {float:right;font-size: 13px;padding-left: 1em;line-height: 22px;}'
-,'.b-page-top {padding:3px 15px 10px;border-bottom:1px solid #989898;}'
+,'.b-page-top {padding:3px 15px;}'
 ,'.b-page-capion {margin:10px 0;padding:0 15px 15px;min-height:300px;}'
 ,'.b-page-bottom {padding:8px 15px 0;border-top:1px solid #989898;}'
 ,'.b-page-top--hide, .b-page-bottom--hide {display:none;}'
-,'.b-page-box_dialogs {display:none;overflow: hidden;border-bottom: 1px solid #D3D3D3;}'
+,'.b-page-box_dialogs {display:none;overflow: hidden;margin: 10px 0;}'
 ,'.b-page-box_dialogs--show {display:block;}'
-,'.b-page-dialog {display:none;overflow: hidden;position: relative;}'
+,'.b-page-dialog {display:none;overflow: hidden;position: relative;background-color: #8CAED3;border: 3px solid #C5DAF1;margin: 0 12px;padding: 1px;}'
 ,'.b-page-dialog--show {display:block;}'
-,'.b-page-dialog_head {background-color:#E9E9E9;border-bottom: 1px solid #FFFFFF;padding: 7px 15px;}'
+,'.b-page-dialog_head {background-color:#E9E9E9;border-bottom: 1px solid #FFFFFF;padding: 4px 15px;}'
 ,'.b-page-dialog_title {}'
 ,'.b-page-dialog_box {padding: 10px 15px;background-color: #F3F3F3;}'
 ,'.b-page-dialog--type-informer {margin: 10px 15px;border: 1px solid #93CB7B;}'
@@ -3819,15 +3820,15 @@ head_node=_('div.b-page-head'+(head=='none'?'':head=='top'?' b-page-head--top':'
 )
 ,ns.box_headLeft=_('div.b-page-head_left'
 ,pr.head_name||pr.name
-))};
+))}else{
+head_node=_('div.b-page-head b-page-head--none')};
 ns.node=_('div.b-page'+(head=='none'?'':head=='top'?' b-page--head_top':' b-page--head_bottom')
 ,{
 css:pr.css
 }
-,(head=='top'?head_node:false)
-,ns.box_top=_('div.b-page-top b-page-top--hide i-grd i-grd--bottom')
+,ns.box_top=_('div.b-page-top b-page-top--hide ')
+,head_node
 ,ns.box_dialogs=_('div.b-page-box_dialogs')
-,(head=='bottom'?head_node:false)
 ,ns.box=_('div.b-page-capion'+(head=='none'?'':head=='top'?' b-page-capion--head_top':' b-page-capion--head_bottom')
 ,{
 css:pr.css_capion
@@ -4188,7 +4189,7 @@ ns.node=_('div.b-topmenu-item item'+(prm.active?' b-topmenu-item--active':'')
 ,ns.text=_.text(prm.text||""))))};
 
 
-/* URL: /js/cram/tmpl/tmpl_sidebar_folders.src.js */
+/* URL: /js/mail_box/tmpl/tmpl_sidebar_folders.src.js */
 
 tmpl.sidebar_folders=function(_,p){
 var ns=this
@@ -4256,7 +4257,7 @@ title:""
 }))};
 
 
-/* URL: /js/cram/ui/ui_sidebar_folders.src.js */
+/* URL: /js/mail_box/ui/ui_sidebar_folders.src.js */
 
 elems.sidebar_folders=rr.new_class({
 interface:true,
@@ -4300,7 +4301,7 @@ elems.folder_mail=function(_,pr){
 };
 
 
-/* URL: /js/cram/mailbox.src.js */
+/* URL: /js/mail_box/mailbox.src.js */
 
 cram.addEvent('open_page',function(e){
 if(e.returnValue==false)return;
@@ -4317,12 +4318,21 @@ var page=domMaster('ui:mailbox_page');
 cram.page_connect_(e,page)};
 
 
-/* URL: /js/cram/tmpl/tmpl_mailbox_page.src.js */
+/* URL: /js/mail_box/tmpl/tmpl_mailbox_page.src.js */
 
 rr.styles('tmpl:maibox'
 ,'.b-page_mailbox-pager {margin-top:20px;}'
-,'.b-mbox_table {overflow: hidden;z-index:0;}'
-,'.b-page_mailbox-menu {margin-left: 3px;}'
+,'.b-mbox_table {padding-top: 1px;overflow: hidden;z-index:0;}'
+,'.b-page_mailbox-bounce_row {height: 28px;line-height: 26px;position: relative;}'
+,'.b-page_mailbox-bounce_title {color: #666666;left: 0;position: absolute;}'
+,'.b-page_mailbox-bounce_book {background-color: #E2E2E2;vertical-align: top;width: 80px;}'
+,'.b-page_mailbox-bounce_box {margin-left: 85px;}'
+,'.b-page_mailbox-bounce_input {-moz-box-sizing: border-box;box-sizing: border-box; height: 24px;line-height: 1.2 !important;vertical-align: top;width: 100%;}'
+,'.b-page_mailbox-bounce_tools {margin-top: 17px;padding-left: 85px;}'
+,'.b-page_mailbox-bounce_cansel {margin-left: 1em;vertical-align: middle;}'
+,'.b-page_mailbox-clear_folder_wrap {line-height: 24px;}'
+,'.b-page_mailbox-clear_folder_go {margin-left: 1em;}'
+,'.b-page_mailbox-clear_folder_cansel {margin-left: 1em;}'
 );
 tmpl.mailbox_sidebar=function(_,pr){
 var ns=this;
@@ -4346,30 +4356,38 @@ extend:ns
 ,_('ui:page_head'
 ,_('tmpl:uToolbar'
 ,{
-css:'b-block_feeds-controls',
+css:'b-page_mailbox-top_tools',
 right:[
-,_('ui:uButton',{
-css:'',
-css_icon:'i-img--remove',
-title:"Удалить выделенные письма",
-text:"Удалить"
+,_('ui:uInput',{
+group:'left'
 })
 ,_('ui:uButton',{
 css:'',
-css_icon:'i-img--spam',
-title:"Удалить в спам выделенные письма",
-text:"Это спам"
+css_icon:'i-img--search',
+first:'right',
+group:'right',
+title:"Найти",
+text:"Найти"
+})
+]
+}
+,_('ui:uButton',{
+css:'',
+css_icon:'i-img--checkbox-inactive',
+first:'left',
+icon:'only',
+title:"Выделить все письма",
+text:"Выделить"
 })
 ,_('ui:uMenu'
 ,{
-css:'b-page_mailbox-menu',
-position:'right',
+css:'b-page_mailbox-menu_action',
+position:'left',
 open:'click',
 node:_('ui:uButton',{
 css:'',
 css_icon:'i-img--arrow_down',
 icon:'right',
-indent:'left',
 title:"Другие действия",
 text:"Действия"
 })}
@@ -4379,25 +4397,48 @@ style:'width:150px;height:200px;'
 }))
 ,_('ui:uButton',{
 css:'',
-css_icon:'i-img--checkbox-inactive',
-first:'right',
-icon:'only',
-title:"Выделить все письма",
-text:"Выделить"
-})
-]
-}
-,_('ui:uInput',{
-first:'left',
-group:'left'
+css_icon:'i-img--remove',
+indent:'left',
+title:"Удалить выделенные письма",
+text:"Удалить"
 })
 ,_('ui:uButton',{
 css:'',
-css_icon:'i-img--search',
-group:'right',
-title:"Найти",
-text:"Найти"
+css_icon:'i-img--spam',
+title:"Удалить в спам выделенные письма",
+text:"Это спам"
 })))
+,ns.dialog_bounce=_('ui:page_dialog',{css:'b-page_mailbox-dialog_bounce',title:"Переадресация",debug:false}
+,_('div.b-page_mailbox-bounce_row'
+,_('span.b-page_mailbox-bounce_title'
+,ns.button_bounce_contacts=_('ui:uButton'
+,{
+css:'b-page_mailbox-bounce_book',
+icon:true,
+css_icon:'i-img--contact',
+text:"Кому:"
+}))
+,_('div.b-page_mailbox-bounce_box'
+,_('INPUT.b-page_mailbox-bounce_input',{title:"Двойной клик по полю откроет адресную книгу",type:"text",name:"to"})))
+,_('div.b-page_mailbox-bounce_tools'
+,ns.button_bounce_contacts=_('ui:uButton'
+,{
+text:"Переадресовать"
+})
+,ns.button_bounce_cansel=_('a.b-page_mailbox-bounce_cansel',{tabIndex:1,href:'js:cansel'}
+,"Отмена"
+)))
+,ns.dialog_clear_folder=_('ui:page_dialog',{css:'b-page_mailbox-dialog_clear_folder',debug:false}
+,_('div.b-page_mailbox-clear_folder_wrap'
+,"Вы уверены, что хотите удалить все письма из папки?"
+,ns.clear_folder_go=_('ui:uButton'
+,{
+css:'b-page_mailbox-clear_folder_go',
+text:"Да"
+})
+,ns.clear_folder_cansel=_('a.b-page_mailbox-clear_folder_cansel',{tabIndex:1,href:'js:cansel'}
+,"Отмена"
+)))
 ,_('div'
 ,_('tmpl:mailbox_list')
 ,_('ui:uPager'
@@ -4449,39 +4490,48 @@ x.unread=unread?x.unread=unread=Math.random()>0.2:false
 x.icon_domain=([,'/xm/i/12bezotveta@odnoklassniki.ru.png','/xm/i/facebook.com.png','/xm/i/vkontakte.ru.png','/xm/i/bugzilla.mozilla.org.png'])[Math.round(Math.random()*10)];
 return _('tmpl:mailbox_listRow',x)}))};
 rr.styles('tmpl:maibox_row'
-,'.b-mbox_row {position:relative;margin:0;padding: 0px 120px 0px 60px; white-space: nowrap;line-height:30px; height:30px; border-bottom:1px solid #ddd;}'
+,'.b-mbox_row {position:relative;margin:-1px 0 0;padding: 0px 120px 0px 60px; white-space: nowrap;line-height:30px; height:30px; border-top:1px solid #ddd;border-bottom:1px solid #ddd;}'
 ,'.b-mbox_row-ap {position: absolute;overflow: hidden;}'
-,'.b-mbox_row-favorite {cursor: pointer;left:5px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
-,'.b-mbox_row-read {cursor: pointer;left:30px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
-,'.b-mbox_row-check {cursor: pointer;right: 4px; top:2px; width:20px;height:26px;background-position: 50% 50%;background-repeat: no-repeat;}'
-,'.b-mbox_row-attach {cursor: default;visibility: hidden;right:130px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
+,'.b-mbox_row-check {cursor: pointer;left:3px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
+,'.b-mbox_row-read {cursor: pointer;left:30px; top:5px; width:16px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
+,'.b-mbox_row-attach {cursor: default;visibility: hidden;right:120px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
 ,'.b-mbox_row-date {cursor: default;text-align: right;right: 30px; top:0; width: 85px; height:30px;}'
+,'.b-mbox_row-favorite {cursor: pointer;right:3px; top:5px; width:16px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
 ,'.b-mbox_row-link {display: inline-block;line-height: 18px;margin-top: 6px;color:#575757;overflow: hidden;max-width:100%;-o-text-overflow: ellipsis; text-overflow: ellipsis;}'
 ,'.b-mbox_row-from {color: #888;font-size: 12px;}'
 ,'.b-mbox_row-subj {margin-left: 10px;color:#000; font-size: 13px;}'
 ,'.b-mbox_row-subj_firstline {color: #575757;font-size: 12px;}'
 ,'.b-mbox_row--unread .b-mbox_row-subj {font-weight: bold;}'
 ,'.b-mbox_row--unread .b-mbox_row-from  {color: #575757;}'
-,'.b-mbox_row--selected {background-color:#B6E1F3;border-bottom-color:#fff;}'
+,'.b-mbox_row--favorite {background-color:#FDFFE6;border-color: #D9E188;z-index:1;}'
+,'.b-mbox_row--selected {background-color:#B6E1F3;border-color:#9EA4B3; z-index: 2;}'
 ,'.b-mbox_row--has_attach {padding-right:160px;}'
 ,'.b-mbox_row--has_attach .b-mbox_row-attach {visibility: visible;}'
-,'.b-mbox_row-check.i-img--checkbox-inactive {opacity:0.3;}'
-,'.b-mbox_row-check.i-img--checkbox-inactive:hover {opacity:0.5;}'
+,'.b-mbox_row-check.i-img--checkbox-inactive {opacity:0.7;}'
+,'.b-mbox_row-favorite.i-img--mail_marked-not {opacity:0.7;}'
 ,'.b-mbox_row-link--icon_domain {background-position: 0 50%;background-repeat: no-repeat;}'
 ,'.b-mbox_row-from--icon_domain {margin-left:20px;}'
 );
 tmpl.mailbox_listRow=function(_,p){
 var ns=this,u;
-p.attach=Math.random()>0.9;
-ns.node=_('div.b-mbox_row'+(p.unread?' b-mbox_row--unread':'')
+p.attach=Math.random()>0.85;
+p.favorite=Math.random()>0.95;
+ns.node=_('div.b-mbox_row'+(p.unread?' b-mbox_row--unread':'')+(p.favorite?' b-mbox_row--favorite':'')
 ,{
 css:p.attach?'b-mbox_row--has_attach':''
 }
+,ns.checkbox=_('a.b-mbox_row-check b-mbox_row-ap i-img--checkbox-inactive i-img_hover--checkbox-hover'
+,{
+onclick:function(){
+rr.css_switch(['i-img--checkbox-inactive','i-img--checkbox-active'],ns.checkbox);
+rr.css_switch(['i-img_hover--checkbox-hover','i-img_hover--checkbox-active'],ns.checkbox);
+rr.css_switch(['b-mbox_row--selected',null],ns.node)}})
 ,ns.favorite_link=_('a.b-mbox_row-favorite b-mbox_row-ap'
 ,{
-css:Math.random()>0.9?'i-img--flag-active':'i-img--flag'
+css:p.favorite?'i-img--mail_marked':'i-img--mail_marked-not'
 ,onclick:function(){
-rr.css_switch(['i-img--flag-active','i-img--flag'],ns.favorite_link)}})
+var x=rr.css_flip('b-mbox_row--favorite',ns.node);
+rr.css_switch(['i-img--mail_marked','i-img--mail_marked-not'],ns.favorite_link,x?0:1)}})
 ,ns.read_link=_('a.b-mbox_row-read b-mbox_row-ap'
 ,{
 css:p.unread?'i-img--mail_unread':'i-img--mail_read',
@@ -4505,15 +4555,10 @@ href:'#'
 title:"Прикрепленные файлы"
 })
 ,_('span.b-mbox_row-date b-mbox_row-ap'
-,_.text(p.date))
-,ns.checkbox=_('a.b-mbox_row-check b-mbox_row-ap i-img--checkbox-inactive'
-,{
-onclick:function(){
-rr.css_switch(['i-img--checkbox-inactive','i-img--checkbox-active'],ns.checkbox);
-rr.css_switch(['b-mbox_row--selected',null],ns.node)}}))};
+,_.text(p.date)))};
 
 
-/* URL: /js/cram/ui/ui_mailbox_page.src.js */
+/* URL: /js/mail_box/ui/ui_mailbox_page.src.js */
 
 elems.mailbox_page=rr.new_class({
 parent:rr.class_baseElement,
@@ -4544,7 +4589,7 @@ init_event:function(ui){
 }});
 
 
-/* URL: /js/cram/tmpl/tmpl_page_compose.src.js */
+/* URL: /js/mail_new/tmpl/tmpl_page_compose.src.js */
 
 rr.styles('tmpl:page_compose'
 ,'.b-page_compose-wrap_send {border:3px solid #CCCCCC;display:inline-block;margin:-3px 5px -3px 0;position: relative;left:-3px;vertical-align: top;}'
@@ -4668,7 +4713,7 @@ text:"С. копия:"
 ,_('div.b-compose_headlines-box'
 ,_('INPUT.b-compose_headlines-input',{title:"Двойной клик по полю откроет адресную книгу",type:"text",name:"to"}))))};
 
-/* URL: /js/cram/ui/ui_page_compose.src.js */
+/* URL: /js/mail_new/ui/ui_page_compose.src.js */
 
 elems.compose_page=rr.new_class({
 parent:rr.class_baseElement,
@@ -4697,7 +4742,7 @@ init_event:function(ui){
 }});
 
 
-/* URL: /js/cram/tmpl/tmpl_compose_editor.src.js */
+/* URL: /js/mail_new/tmpl/tmpl_compose_editor.src.js */
 
 rr.styles('wysiwyg_frame:rm_tinymce'
 ,'body {padding:0 0 0 3px;margin:0;background-color:#FFF;}'
@@ -4726,7 +4771,7 @@ rr.styles('wysiwyg_frame:rm_tinymce'
 ,'font[size="6"] {font-size:18pt !important;}'
 ,'font[size="7"] {font-size:24pt !important;}'
 ,'blockquote span.quote {color: #f00;}'
-,'.mceItemHiddenSpellWord {background:url("+(window._static_host||\'\')+"/i/chameleon/misspell.png) repeat-x bottom left; cursor:default;}'
+,'.mceItemHiddenSpellWord {background:url("/i/chameleon/misspell.png") repeat-x bottom left; cursor:default;}'
 );
 rr.styles('tmpl:tinymce_tmpl.theme_ramail'
 ,'.b-wsgRamail table, .b-wsgRamail tbody, .b-wsgRamail a, .b-wsgRamail img, .b-wsgRamail tr, .b-wsgRamail td, .b-wsgRamail iframe, .b-wsgRamail span {border:0; margin:0; padding:0; background:transparent; white-space:nowrap; text-decoration:none; font-weight:normal;color:#000}'
@@ -4823,7 +4868,7 @@ ns.node=_('div.b-wsgRamail'
 ,ns.box=_('div.b-wsgRamail-box'))};
 
 
-/* URL: /js/cram/ui/ui_compose_editor.src.js */
+/* URL: /js/mail_new/ui/ui_compose_editor.src.js */
 
 var tinyMCE_GZ={loaded:true};
 var tinyMCEPreInit={
@@ -4903,7 +4948,7 @@ ed.onPreInit.add(function(){
 rr.styles_include('wysiwyg_frame:rm_tinymce',ed.getDoc())})}})}});
 
 
-/* URL: /js/cram/compose.src.js */
+/* URL: /js/mail_new/compose.src.js */
 
 cram.addEvent('open_page',function(e){
 if(e.returnValue==false)return;
@@ -5332,14 +5377,48 @@ css:'b-block_feeds-controls',
 right:[
 ,_('ui:uButton',{
 css:'',
+css_icon:'i-img--arrow_left',
+group:'left',
+title:"День",
+text:"День"
+})
+,_('ui:uButton',{
+css:'',
+css_icon:'i-img--arrow_right',
+active:true,
+group:'center',
+title:"Неделя",
+text:"Неделя"
+})
+,_('ui:uButton',{
+css:'',
+css_icon:'i-img--',
+group:'right',
+title:"Месяц",
+text:"Месяц"
+})
+,_('ui:uButton',{
+css:'',
+icon:'only',
 css_icon:'i-img--refresh',
+indent:'left',
+first:'right',
+title:"Обновить данные",
+text:"Обновить"
+})
+]
+}
+,_('ui:uButton',{
+css:'',
+css_icon:'i-img--refresh',
+first:'left',
 title:"Сегодня",
 text:"Сегодня"
 })
 ,_('ui:uButton',{
 css:'',
 css_icon:'i-img--arrow_left',
-group:'new',
+indent:'left',
 icon:'only',
 title:"Назад",
 text:">"
@@ -5351,28 +5430,6 @@ first:'right',
 icon:'only',
 title:"Вперед",
 text:">"
-})
-]
-}
-,_('ui:uButton',{
-css:'',
-css_icon:'i-img--arrow_left',
-first:'left',
-title:"День",
-text:"День"
-})
-,_('ui:uButton',{
-css:'',
-css_icon:'i-img--arrow_right',
-active:true,
-title:"Неделя",
-text:"Неделя"
-})
-,_('ui:uButton',{
-css:'',
-css_icon:'i-img--',
-title:"Месяц",
-text:"Месяц"
 })))
 ,ns.calendar=_('ui:rc_calendar'
 ,{
@@ -17194,7 +17251,7 @@ ed.onInit.add(function(){
 ed.selection.onSetContent.add(convert)})}});
 
 
-/* URL: /js/cram/wysiwyg_template_src.js */
+/* URL: /js/mail_new/wysiwyg_template_src.js */
 
 (function(){
 var DOM=tinymce.DOM,_=masterElement;

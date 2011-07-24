@@ -161,9 +161,10 @@ h1.last, h2.last, h3.last, h4.last, h5.last, h6.last, h7.last {
 
 .i-img--mail_read, .i-hover_img:hover .i-img_hover--mail_read, .i-hover_img--mail_read:hover .i-img_hover--mail_read, .i-img_hover--mail_read:hover {background-image:url("../i/fatcow-hosting-icons-2400/16x16/bullet_white.png");background-repeat: no-repeat;}
 .i-img--mail_read:hover, .i-hover_img:hover .i-img--mail_read, .i-hover_img--mail_read:hover .i-img--mail_read {background-image:url("../i/fatcow-hosting-icons-2400/16x16/bullet_white.png");background-repeat: no-repeat;}
+/*
 .i-img--mail_unread, .i-hover_img:hover .i-img_hover--mail_unread, .i-hover_img--mail_unread:hover .i-img_hover--mail_unread, .i-img_hover--mail_unread:hover {background-image:url("../i/fatcow-hosting-icons-2400/16x16/bullet_green.png");background-repeat: no-repeat;}
 .i-img--mail_unread:hover, .i-hover_img:hover .i-img--mail_unread, .i-hover_img--mail_unread:hover .i-img--mail_unread {background-image:url("../i/fatcow-hosting-icons-2400/16x16/bullet_green.png");background-repeat: no-repeat;}
-
+*/
 .i-img--mail_marked, .i-hover_img:hover .i-img_hover--mail_marked, .i-hover_img--mail_marked:hover .i-img_hover--mail_marked, .i-img_hover--mail_marked:hover {background-image:url("../i/fatcow-hosting-icons-2400/16x16/star.png");background-repeat: no-repeat;}
 .i-img--mail_marked-not, .i-hover_img:hover .i-img_hover--mail_marked-not, .i-hover_img--mail_marked-not:hover .i-img_hover--mail_marked-not, .i-img_hover--mail_marked-not:hover {background-image:url("../i/fatcow-hosting-icons-2400/16x16/star_inactive.png");background-repeat: no-repeat;}
 

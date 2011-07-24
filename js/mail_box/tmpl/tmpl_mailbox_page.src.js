@@ -1,7 +1,7 @@
 
 rr.styles('tmpl:maibox'
 	, '.b-page_mailbox-pager {margin-top:20px;}'
-	, '.b-mbox_table {overflow: hidden;z-index:0;}'
+	, '.b-mbox_table {padding-top: 1px;overflow: hidden;z-index:0;}'
 	//, '.b-page_mailbox-menu {margin-left: 3px;}'
 
 	, '.b-page_mailbox-bounce_row {height: 28px;line-height: 26px;position: relative;}'
@@ -262,16 +262,16 @@ tmpl.mailbox_list = function (_, pr) {
 };
 
 rr.styles('tmpl:maibox_row'
-	, '.b-mbox_row {position:relative;margin:0;padding: 0px 90px 0px 90px; white-space: nowrap;line-height:30px; height:30px; border-bottom:1px solid #ddd;}'
+	, '.b-mbox_row {position:relative;margin:-1px 0 0;padding: 0px 120px 0px 60px; white-space: nowrap;line-height:30px; height:30px; border-top:1px solid #ddd;border-bottom:1px solid #ddd;}'
 
 	, '.b-mbox_row-ap {position: absolute;overflow: hidden;}' //overflow: hidden;
 
 
 	, '.b-mbox_row-check {cursor: pointer;left:3px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}' //margin-
-	, '.b-mbox_row-read {cursor: pointer;left:70px; top:5px; width:12px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
-	, '.b-mbox_row-favorite {cursor: pointer;left:30px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
-	, '.b-mbox_row-attach {cursor: default;visibility: hidden;right:100px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
-	, '.b-mbox_row-date {cursor: default;text-align: right;right: 0px; top:0; width: 85px; height:30px;}'
+	, '.b-mbox_row-read {cursor: pointer;left:30px; top:5px; width:16px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
+	, '.b-mbox_row-attach {cursor: default;visibility: hidden;right:120px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
+	, '.b-mbox_row-date {cursor: default;text-align: right;right: 30px; top:0; width: 85px; height:30px;}'
+	, '.b-mbox_row-favorite {cursor: pointer;right:3px; top:5px; width:16px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
 
 
 	, '.b-mbox_row-link {display: inline-block;line-height: 18px;margin-top: 6px;color:#575757;overflow: hidden;max-width:100%;-o-text-overflow: ellipsis; text-overflow: ellipsis;}' // not work -o-text-overflow: ellipsis; text-overflow: ellipsis;
@@ -281,8 +281,10 @@ rr.styles('tmpl:maibox_row'
 
 	, '.b-mbox_row--unread .b-mbox_row-subj {font-weight: bold;}'
 	, '.b-mbox_row--unread .b-mbox_row-from  {color: #575757;}'
-	, '.b-mbox_row--selected {background-color:#B6E1F3;border-bottom-color:#fff;}'
+	, '.b-mbox_row--favorite {background-color:#FDFFE6;border-color: #D9E188;z-index:1;}'
+	, '.b-mbox_row--selected {background-color:#B6E1F3;border-color:#9EA4B3; z-index: 2;}'
 
+	
 
 	, '.b-mbox_row--has_attach {padding-right:160px;}'
 	, '.b-mbox_row--has_attach .b-mbox_row-attach {visibility: visible;}'
@@ -309,12 +311,10 @@ rr.styles('tmpl:maibox_row'
 tmpl.mailbox_listRow = function (_, p) {
 	var ns = this, u;
 
-	p.attach = Math.random() > 0.9;
+	p.attach = Math.random() > 0.85;
+	p.favorite = Math.random() > 0.95;
 
-
-
-
-	ns.node = _('div.b-mbox_row' + (p.unread ? ' b-mbox_row--unread' : '')
+	ns.node = _('div.b-mbox_row' + (p.unread ? ' b-mbox_row--unread' : '') + (p.favorite ? ' b-mbox_row--favorite' : '')
 		, {
 			css: p.attach ? 'b-mbox_row--has_attach' : ''
 
@@ -336,9 +336,10 @@ tmpl.mailbox_listRow = function (_, p) {
 
 		, ns.favorite_link = _('a.b-mbox_row-favorite b-mbox_row-ap'
 			, {
-				css: Math.random() > 0.9 ? 'i-img--mail_marked' : 'i-img--mail_marked-not'
+				css: p.favorite ? 'i-img--mail_marked' : 'i-img--mail_marked-not'
 				, onclick: function () {
-					rr.css_switch(['i-img--mail_marked', 'i-img--mail_marked-not'], ns.favorite_link)
+					var x = rr.css_flip('b-mbox_row--favorite', ns.node);
+					rr.css_switch(['i-img--mail_marked', 'i-img--mail_marked-not'], ns.favorite_link, x ? 0 : 1)
 				}
 			}
 		)
