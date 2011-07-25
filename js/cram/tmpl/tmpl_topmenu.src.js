@@ -47,12 +47,12 @@ rr.styles('tmpl:topmenu'
 			)
 		+ '}'
 
-	, (rr.WebKit < 534 && rr.is_mobile) && [
-		, '.b-topmenu-item {overflow: hidden;}'
-		, '.b-topmenu-item_bg {bottom:-1px;}'
-		]
+	//, (rr.WebKit < 534 && rr.is_mobile) && [
+		//, '.b-topmenu-item {overflow: hidden;}'
+		//, '.b-topmenu-item_bg {bottom:-1px;}'
+		//]
 
-	, '.b-topmenu-item--active {z-index: 1;}'
+	, '.b-topmenu-item--active {z-index: 2;}'
 	, '.b-topmenu-item--active .bg {background-color: #FFF;margin-bottom: -2px;}'
 
 	, '.b-topmenu-item_link {text-indent: 8px;display: block;margin-left:2px;text-decoration: none;}'
@@ -86,17 +86,20 @@ tmpl.topmenu = function(_, prm){
 
 		, _('div.b-topmenu-grd_line')
 
+		/*
 		, _('A.b-topmenu-logo_link no_underline s-logo'
 			, {
 				tabIndex: 1,
 				href: '/',
 				title:"Домой"
-				}
+			}
+
 			, _('span.b-topmenu-logo_envelope s-logo_envelope')
 			, _('SPAN.b-topmenu-logo_title s-logo_title'
 				, "c:"
-				)
 			)
+		)
+			*/
 
 		, _('div.b-topmenu-box b-topmenu-box--x4' // --x1 --x2 --x3 --x4 --x5 --x6
 			, ns.item_compose = _('tmpl:topmenu_item'
@@ -104,24 +107,24 @@ tmpl.topmenu = function(_, prm){
 					text: "Написать письмо",
 					title: "Создание нового письма",
 					href: '#/compose'
-					}
-				)
+				}
+			)
 
 			, ns.item_mailbox = _('tmpl:topmenu_item'
 				, {
 					text: "Входящие",
 					title: "Проверить почту и перейти в папку «Входящие»",
 					href: '#/mailbox/inbox'
-					}
-				)
+				}
+			)
 
 			, ns.item_contacts = _('tmpl:topmenu_item'
 				, {
 					text: "Контакты",
 					title: "Сохраненные адреса",
 					href: '#/contacts'
-					}
-				)
+				}
+			)
 
 			, ns.item_calendar = _('tmpl:topmenu_item'
 				, {
@@ -130,8 +133,8 @@ tmpl.topmenu = function(_, prm){
 					text: "Календарь",
 					title: "Календарь события",
 					href: '#/calendar'
-					}
-				)
+				}
+			)
 
 			, _('div.b-topmenu-other_wrap'
 				, ns.item_settings = _('a.b-topmenu-other no_underline i-img--arrow_down'
@@ -139,17 +142,18 @@ tmpl.topmenu = function(_, prm){
 						tabIndex: 1,
 						title: "Настройки",
 						href: '#/settings'
-						}
-					)
+					}
 				)
-
 			)
+
+		)
 
 
 		/*
 			*/
 
 
+		/*
 		, _('a.b-topmenu-user_link no_underline' //i-img--arrow_down
 			, {
 				tabIndex: 1,
@@ -159,6 +163,7 @@ tmpl.topmenu = function(_, prm){
 				, "vflash@eeee.ee"
 				)
 			)
+		*/
 
 		/*
 		, _('ui:uMenu'
@@ -209,8 +214,8 @@ tmpl.topmenu = function(_, prm){
 			)
 
 		*/
-		);
-	};
+	);
+};
 
 tmpl.topmenu_item = function(_, prm) {
 	var ns = this;

@@ -233,7 +233,7 @@ h1.last, h2.last, h3.last, h4.last, h5.last, h6.last, h7.last {
 /* --- style demo --- */
 .skin-demo body {
 	background-image: url("../i/linen.jpg");
-	padding: 50px 15px 30px;
+	padding: 75px 15px 30px;
 	}
 
 .skin-demo #wrapper {
@@ -253,7 +253,7 @@ h1.last, h2.last, h3.last, h4.last, h5.last, h6.last, h7.last {
 	}
 
 .skin-demo #footer {
-	background-color: rgba(255, 255, 255, 0.3);
+	background-color: rgba(255, 255, 255, 0.2);
 	-moz-border-radius: 0 0 3px 3px;
 	border-radius: 0 0 3px 3px;
 	}

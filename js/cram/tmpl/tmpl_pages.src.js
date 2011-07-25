@@ -1,4 +1,9 @@
 rr.styles('tmpl:page'
+	, '.b-topline {background-color: #333333;height: 26px;left: 0;position: absolute;right: 0;top: 0;z-index: 2;line-height: 26px;font-size: 12px;padding: 0 15px}'
+	, '.b-topline-box {max-width: 1050px;margin: 0 auto;text-align: right;}'
+	, '.b-topline-left {text-align: left;float:left;margin-left: 10px;}'
+	, '.b-topline-right {margin-right: 10px;}'
+	, '.b-topline-link, a.b-topline-link {color: #fff !important;}'
 
 /* --------------- scroll top -------- */
 	, '.b-frame_goScrollTop {position:' + (rr.Opera ? 'absolute' : 'fixed') + ' ;top:0;display:none;width: 210px;height: 0;-moz-user-select: none;user-select: none;}'
@@ -20,14 +25,14 @@ rr.styles('tmpl:page'
 
 /* --------------- page --------------- */
 	, '.b-page {}'
-	, '.b-page-head {background-color: #F3F3F3;color:#000;font-size:18px;line-height:24px;padding:4px 15px;margin-top:7px;margin-bottom:10px;white-space: nowrap;border-bottom: 1px solid #DDDDDD;border-top: 1px solid #DDDDDD;}'
+	, '.b-page-head {background-color: #F3F3F3;color:#000;font-size:18px;line-height:24px;padding:4px 10px;margin-top:7px;margin-bottom:10px;white-space: nowrap;border-bottom: 1px solid #DDDDDD;border-top: 1px solid #DDDDDD;}'
 	, '.b-page-head--none {height:0px;}'
 
 	, '.b-page-head_left {overflow: hidden;}'
 	, '.b-page-head_right {float:right;font-size: 13px;padding-left: 1em;line-height: 22px;}' //overflow: hidden;
 
-	, '.b-page-top {padding:3px 15px;}' //border-bottom:1px solid #989898;
-	, '.b-page-capion {margin:10px 0;padding:0 15px 15px;min-height:300px;}'
+	, '.b-page-top {padding:3px 10px;}' //border-bottom:1px solid #989898;
+	, '.b-page-capion {margin:10px 0;padding:0 10px 10px;min-height:300px;}'
 //, '.b-page-capion--head_top {margin-top:15px;}'
 
 	, '.b-page-bottom {padding:8px 15px 0;border-top:1px solid #989898;}'
@@ -58,7 +63,7 @@ rr.styles('tmpl:page'
 
 
 /* --------------- footer --------------- */
-	, '.b-frame_footer {background-color: #FFFFFF;font-size:80%;overflow:hidden;clear:both;padding:10px 10px 10px;border-top:1px solid #cbcbcb;}'
+	, '.b-frame_footer {background-color: #FFFFFF;font-size:80%;overflow:hidden;clear:both;padding:10px 10px;border-top:1px solid #333;}'
 	, '.b-frame_footer-left {width:30%;float:left;}'
 	, '.b-frame_footer-right {float:left;width:70%;_width:69.9%;text-align:right;}'
 	);
@@ -93,6 +98,23 @@ tmpl.mainframe = function (_, pr) {
 
 
 	ns.node = _('DocumentFragment' //'body'
+		, _('div.b-topline'
+			, _('div.b-topline-box'
+				, _('span.b-topline-left'
+					, _('a.b-topline-link', { href: '/' }
+						, "Главная"
+					)
+				)
+
+				, _('span.b-topline-right'
+					, _('a.b-topline-link no_underline', {href: '/'}
+						, _('span.b-topline-link_text underline'
+							, "Константин"
+						)
+					)
+				)
+			)
+		)
 
 		, ns.node_frame = _('div.b-frame_wrapper#wrapper'
 			, ns.goScrollTop = _('div.b-frame_goScrollTop'
@@ -181,7 +203,6 @@ tmpl.page = function (_, pr) {
 			, ns.box_headRight = _('div.b-page-head_right'
 				, pr.head_right
 			)
-
 			, ns.box_headLeft = _('div.b-page-head_left'
 				, pr.head_name || pr.name
 			)
@@ -223,7 +244,7 @@ tmpl.page_dialog_ = function (_, prm) {
 };
 
 tmpl.page_dialog = function (_, prm) {
-	var ns = this;
+	var ns = prm.extend || this;
 
 	if (prm.title) {
 		ns.head = _('div.b-page-dialog_head' // шапка добавиться если есть title

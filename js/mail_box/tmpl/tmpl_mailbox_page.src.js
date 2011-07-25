@@ -16,6 +16,14 @@ rr.styles('tmpl:maibox'
 	, '.b-page_mailbox-clear_folder_go {margin-left: 1em;}'
 	, '.b-page_mailbox-clear_folder_cansel {margin-left: 1em;}'
 
+	, '.b-page_mailbox-button_filter {color: #333 !important;padding: 2px 33px 2px 5px;cursor: pointer;background-position: 100% 50%;border-radius: 2px 2px 2px 2px;}'
+	, '.b-page_mailbox-button_filter:hover {background-color: #DDDDDD;}'
+
+	, '.b-page_mailbox-more {margin: 15px 0;}'
+	, '.b-page_mailbox-more_link {cursor: pointer;background-color: #FFF;border: 1px solid #DDD;color: #000000 !important;display: block;line-height: 30px;margin: 0 auto;text-align: center;width: 300px;}'
+	, '.b-page_mailbox-more_link:hover {background-color: #EEE;border-color: #DDD;}'
+	, '.b-page_mailbox-more_text {}'
+
 );
 
 
@@ -48,7 +56,29 @@ tmpl.mailbox_page = function (_, pr) {
 
 
 			, head_right: [
-				, "1–50 из 669"
+
+				, _('ui:uMenu'
+					, {
+						css: 'b-page_mailbox-menu_action',
+						position: 'right', //'right/left',
+						open: 'click', //auto|click|hover
+						//debug: true,
+						
+						node: _('a.b-page_mailbox-button_filter no_underline i-img--arrow_down'
+							, _('span'
+								, "Сегодня 25 июля"
+							)
+						)
+					}
+
+					, _('div'
+						, {
+							style: 'width:250px;height:300px;'
+						}
+
+					)
+				)
+
 			]
 		}
 
@@ -118,28 +148,29 @@ tmpl.mailbox_page = function (_, pr) {
 
 				, _('ui:uButton', {
 					css: '',
-					css_icon: 'i-img--remove',
-					//icon: 'left', //'only',
-					//group: 'new',
-					indent: 'left',
-					title: "Удалить выделенные письма",
-					text: "Удалить"
-				})
-
-				, _('ui:uButton', {
-					css: '',
 					css_icon: 'i-img--spam',
 					//first: 'left',
 					//group: 'new',
 					//icon: 'left', //'only',
+					indent: 'left',
 					title: "Удалить в спам выделенные письма",
 					text: "Это спам"
+				})
+
+				, _('ui:uButton', {
+					css: '',
+					css_icon: 'i-img--remove',
+					//icon: 'left', //'only',
+					//group: 'new',
+					//indent: 'left',
+					title: "Удалить выделенные письма",
+					text: "Удалить"
 				})
 
 			)
 		) //
 
-		, ns.dialog_bounce = _('ui:page_dialog', {css: 'b-page_mailbox-dialog_bounce', title: "Переадресация",  debug: false } //title: "Test",
+		, ns.dialog_bounce = _('ui:page_dialog', { css: 'b-page_mailbox-dialog_bounce', title: "Переадресация", debug: false} //title: "Test",
 			, _('div.b-page_mailbox-bounce_row'
 				, _('span.b-page_mailbox-bounce_title'
 					, ns.button_bounce_contacts = _('ui:uButton'
@@ -163,7 +194,7 @@ tmpl.mailbox_page = function (_, pr) {
 					}
 				)
 
-				, ns.button_bounce_cansel = _('a.b-page_mailbox-bounce_cansel', {tabIndex:1, href: 'js:cansel'}
+				, ns.button_bounce_cansel = _('a.b-page_mailbox-bounce_cansel', { tabIndex: 1, href: 'js:cansel' }
 					, "Отмена"
 					)
 			)
@@ -171,9 +202,9 @@ tmpl.mailbox_page = function (_, pr) {
 		) //
 
 
-		, ns.dialog_clear_folder = _('ui:page_dialog', {css: 'b-page_mailbox-dialog_clear_folder',  debug: false } //title: "Test",
+		, ns.dialog_clear_folder = _('ui:page_dialog', { css: 'b-page_mailbox-dialog_clear_folder', debug: false} //title: "Test",
 			, _('div.b-page_mailbox-clear_folder_wrap'
-				,"Вы уверены, что хотите удалить все письма из папки?"
+				, "Вы уверены, что хотите удалить все письма из папки?"
 				, ns.clear_folder_go = _('ui:uButton'
 					, {
 						css: 'b-page_mailbox-clear_folder_go',
@@ -181,7 +212,7 @@ tmpl.mailbox_page = function (_, pr) {
 					}
 				)
 
-				, ns.clear_folder_cansel = _('a.b-page_mailbox-clear_folder_cansel', {tabIndex:1, href: 'js:cansel'}
+				, ns.clear_folder_cansel = _('a.b-page_mailbox-clear_folder_cansel', { tabIndex: 1, href: 'js:cansel' }
 					, "Отмена"
 				)
 			)
@@ -191,6 +222,15 @@ tmpl.mailbox_page = function (_, pr) {
 		, _('div'
 			, _('tmpl:mailbox_list')
 
+			, _('div.b-page_mailbox-more'
+				,_('a.b-page_mailbox-more_link no_underline'
+					, _('span.b-page_mailbox-more_text'
+						, "Ещё"
+					)
+				)
+			)
+
+			/*
 			, _('ui:uPager'
 				, {
 					css: 'b-page_mailbox-pager',
@@ -199,6 +239,7 @@ tmpl.mailbox_page = function (_, pr) {
 					url_mask: '#/page/%s'
 				}
 			)
+			*/
 		)
 	)
 };
@@ -211,6 +252,7 @@ tmpl.mailbox_page = function (_, pr) {
 tmpl.mailbox_list = function (_, pr) {
 	var px = [
 		{
+			id: 713,
 			from: "SourceForge Resource New.",
 			subj: "Ответ на ваш комментарий к хабратопику \"Хакеры украли письма с Hotmail благодаря ошибке...",
 			text: " - Пользователь skaut8 ответил на ваш комментарий к …",
@@ -218,13 +260,16 @@ tmpl.mailbox_list = function (_, pr) {
 		}
 
 		, {
+			id: 714,
 			from: "INTUIT.RU",
 			subj: "INTUIT.ru: ИНТУИТ получил новую бессрочную лицензию",
 			text: " - INTUIT.ru: ИНТУИТ получил новую бессрочную лицензию …",
 			date: "1 июл 2008"
+			//time: [1, 6, 2008]
 		}
 
 		, {
+			id: 715,
 			from: "МойСклад",
 			subj: "Посетите наш стенд на ECOM Expo и другие новости",
 			text: " - Здравствуйте, уважаемые пользователи сервиса …",
@@ -232,6 +277,7 @@ tmpl.mailbox_list = function (_, pr) {
 		}
 
 		, {
+			id: 716,
 			from: "internet_payment",
 			subj: "Информация о платеже",
 			text: " - Номер платежа: 925876 Название магазина: Аэрофлот …",
@@ -239,6 +285,7 @@ tmpl.mailbox_list = function (_, pr) {
 		}
 
 		, {
+			id: 717,
 			from: "McAfee",
 			subj: "Скидка 50% при обновлении защиты компьютера Sony",
 			text: " - McAfee | VAIO рекомендует McAfee и Sony. Идеальный дуэт. Система …",
@@ -249,9 +296,10 @@ tmpl.mailbox_list = function (_, pr) {
 	var ns = this, unread = true;
 
 	ns.node = _('div.b-mbox_table'
-		, _.forEach(100, function () {
+		, _.forEach(50, function () {
 			var x = Math.floor(Math.random() * (px.length - 0.1))
 			x = px[x];
+
 
 			x.unread = unread ? x.unread = unread = Math.random() > 0.2 : false
 			x.icon_domain = ([, '/xm/i/12bezotveta@odnoklassniki.ru.png', '/xm/i/facebook.com.png', '/xm/i/vkontakte.ru.png', '/xm/i/bugzilla.mozilla.org.png'])[Math.round(Math.random() * 10)];
@@ -270,8 +318,12 @@ rr.styles('tmpl:maibox_row'
 	, '.b-mbox_row-check {cursor: pointer;left:3px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}' //margin-
 	, '.b-mbox_row-read {cursor: pointer;left:30px; top:5px; width:16px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
 	, '.b-mbox_row-attach {cursor: default;visibility: hidden;right:120px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
-	, '.b-mbox_row-date {cursor: default;text-align: right;right: 30px; top:0; width: 85px; height:30px;}'
+	, '.b-mbox_row-date {cursor: pointer;text-align: right;right: 30px; top:4px; width: 82px; height:22px;line-height:22px;padding-right:3px;color:#000 !important;}'
 	, '.b-mbox_row-favorite {cursor: pointer;right:3px; top:5px; width:16px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
+
+	, '.b-mbox_row-date:hover {background-color:#E4E4E4;border-radius: 2px;}'
+	, '.b-mbox_row--selected .b-mbox_row-date:hover {background-color:#B6cccc;}'
+	
 
 
 	, '.b-mbox_row-link {display: inline-block;line-height: 18px;margin-top: 6px;color:#575757;overflow: hidden;max-width:100%;-o-text-overflow: ellipsis; text-overflow: ellipsis;}' // not work -o-text-overflow: ellipsis; text-overflow: ellipsis;
@@ -282,7 +334,9 @@ rr.styles('tmpl:maibox_row'
 	, '.b-mbox_row--unread .b-mbox_row-subj {font-weight: bold;}'
 	, '.b-mbox_row--unread .b-mbox_row-from  {color: #575757;}'
 	, '.b-mbox_row--favorite {background-color:#FDFFE6;border-color: #D9E188;z-index:1;}'
+
 	, '.b-mbox_row--selected {background-color:#B6E1F3;border-color:#9EA4B3; z-index: 2;}'
+	, '.b-mbox_row--selected + .b-mbox_row--selected {border-top-color:#FFF;}'
 
 	
 
@@ -357,7 +411,7 @@ tmpl.mailbox_listRow = function (_, p) {
 	//, _('span.b-mbox_row-content'
 		, _('a.b-mbox_row-link no_underline' + (p.icon_domain ? ' b-mbox_row-link--icon_domain' : '')
 			, {
-				style: p.icon_domain ? {backgroundImage: 'url('+p.icon_domain+')'} : u,
+				style: p.icon_domain ? { backgroundImage: 'url(' + p.icon_domain + ')'} : u,
 				onclick: function () { },
 				href: '#'
 			}
@@ -381,7 +435,12 @@ tmpl.mailbox_listRow = function (_, p) {
 			}
 		)
 
-		, _('span.b-mbox_row-date b-mbox_row-ap'
+		, _('a.b-mbox_row-date b-mbox_row-ap no_underline'
+			, {
+				title: 'Фильтр от этого письма',
+				href: '#/mailbox/inbox/n'+p.id
+				//href: '#/mailbox:date=201107260812/INBOX'
+				}
 			, _.text(p.date)
 		)
 	);

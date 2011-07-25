@@ -1,5 +1,5 @@
 rr.styles('tmpl:page_compose'
-	, '.b-page_compose-wrap_send {border:3px solid #CCCCCC;display:inline-block;margin:-3px 5px -3px 0;position: relative;left:-3px;vertical-align: top;}' //margin-left: -3px 3px 0 -3px;
+	, '.b-page_compose-wrap_send {border:3px solid transparent;display:inline-block;margin:-3px 5px -3px 0;position: relative;left:-3px;vertical-align: top;}' //margin-left: -3px 3px 0 -3px;
 
 
 	, '.b-page_compose-modes_toolbar {margin-top:10px;padding:1px 0;text-align:right;font-size:80%;}'

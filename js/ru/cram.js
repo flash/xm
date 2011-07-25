@@ -1,4 +1,4 @@
-/* BUILD DATE: Sun, 24 Jul 2011 19:25:58 GMT*/
+/* BUILD DATE: Mon, 25 Jul 2011 20:44:01 GMT*/
 
 
 /* URL: /js/cram/values.src.js */
@@ -3730,6 +3730,11 @@ return _.tmpl(tmpl.uPager,pr)}});
 /* URL: /js/cram/tmpl/tmpl_pages.src.js */
 
 rr.styles('tmpl:page'
+,'.b-topline {background-color: #333333;height: 26px;left: 0;position: absolute;right: 0;top: 0;z-index: 2;line-height: 26px;font-size: 12px;padding: 0 15px}'
+,'.b-topline-box {max-width: 1050px;margin: 0 auto;text-align: right;}'
+,'.b-topline-left {text-align: left;float:left;margin-left: 10px;}'
+,'.b-topline-right {margin-right: 10px;}'
+,'.b-topline-link, a.b-topline-link {color: #fff !important;}'
 ,'.b-frame_goScrollTop {position:'+(rr.Opera?'absolute':'fixed')+' ;top:0;display:none;width: 210px;height: 0;-moz-user-select: none;user-select: none;}'
 ,'.b-frame_goScrollTop--show {display:block;}'
 ,'.b-frame_goScrollTop-text {position: '+(rr.Opera?'fixed':'absolute')+';top:110px;background-color:#E6E6E6;color:#333; padding:4px 10px 4px 30px;z-index: 1200;cursor: pointer;}'
@@ -3739,12 +3744,12 @@ rr.styles('tmpl:page'
 ,'.b-frame_box {margin-left:210px;border-left:1px solid #CCCCCC;}'
 ,'.b-frame_pleft {position:absolute;width:200px;z-index:1;left:5px;}'
 ,'.b-page {}'
-,'.b-page-head {background-color: #F3F3F3;color:#000;font-size:18px;line-height:24px;padding:4px 15px;margin-top:7px;margin-bottom:10px;white-space: nowrap;border-bottom: 1px solid #DDDDDD;border-top: 1px solid #DDDDDD;}'
+,'.b-page-head {background-color: #F3F3F3;color:#000;font-size:18px;line-height:24px;padding:4px 10px;margin-top:7px;margin-bottom:10px;white-space: nowrap;border-bottom: 1px solid #DDDDDD;border-top: 1px solid #DDDDDD;}'
 ,'.b-page-head--none {height:0px;}'
 ,'.b-page-head_left {overflow: hidden;}'
 ,'.b-page-head_right {float:right;font-size: 13px;padding-left: 1em;line-height: 22px;}'
-,'.b-page-top {padding:3px 15px;}'
-,'.b-page-capion {margin:10px 0;padding:0 15px 15px;min-height:300px;}'
+,'.b-page-top {padding:3px 10px;}'
+,'.b-page-capion {margin:10px 0;padding:0 10px 10px;min-height:300px;}'
 ,'.b-page-bottom {padding:8px 15px 0;border-top:1px solid #989898;}'
 ,'.b-page-top--hide, .b-page-bottom--hide {display:none;}'
 ,'.b-page-box_dialogs {display:none;overflow: hidden;margin: 10px 0;}'
@@ -3759,7 +3764,7 @@ rr.styles('tmpl:page'
 ,'.b-rm_loading {font-size:14px;display:none;z-index: 999;cursor: default;position:fixed;top:0;left:50%;width:20em;margin-left:-10em;height:0;text-align:center;}'
 ,'.b-rm_loading--show {display:block;}'
 ,'.b-rm_loading-text {padding: 3px 1ex;text-align:left;background-color: #EEE;color:#555;}'
-,'.b-frame_footer {background-color: #FFFFFF;font-size:80%;overflow:hidden;clear:both;padding:10px 10px 10px;border-top:1px solid #cbcbcb;}'
+,'.b-frame_footer {background-color: #FFFFFF;font-size:80%;overflow:hidden;clear:both;padding:10px 10px;border-top:1px solid #333;}'
 ,'.b-frame_footer-left {width:30%;float:left;}'
 ,'.b-frame_footer-right {float:left;width:70%;_width:69.9%;text-align:right;}'
 );
@@ -3772,6 +3777,17 @@ _('body'
 tmpl.mainframe=function(_,pr){
 var ns=this;
 ns.node=_('DocumentFragment'
+,_('div.b-topline'
+,_('div.b-topline-box'
+,_('span.b-topline-left'
+,_('a.b-topline-link',{href:'/'}
+,"Главная"
+))
+,_('span.b-topline-right'
+,_('a.b-topline-link no_underline',{href:'/'}
+,_('span.b-topline-link_text underline'
+,"Константин"
+)))))
 ,ns.node_frame=_('div.b-frame_wrapper#wrapper'
 ,ns.goScrollTop=_('div.b-frame_goScrollTop'
 ,ns.goScrollTop_click=_('div.b-frame_goScrollTop-text s-menu_bg',{tabIndex:1}
@@ -3839,7 +3855,7 @@ var ns=this;
 ns.node=_('div.b-page-dialog'
 ,{css:prm.css})};
 tmpl.page_dialog=function(_,prm){
-var ns=this;
+var ns=prm.extend||this;
 if(prm.title){
 ns.head=_('div.b-page-dialog_head'
 ,_('span.b-page-dialog_text'
@@ -3990,7 +4006,6 @@ ui.box.appendChild(n)}
 else if(type<0){
 switch(n.elementType){
 case'page_dialog':
-n.parent=this;
 this.nodes.box_dialogs.appendChild(n.node);
 if(rr.indexOf(this.dialogs,n)<0){
 this.dialogs.push(n)};
@@ -4109,11 +4124,7 @@ rr.styles('tmpl:topmenu'
 :'background-color: #F3F3F3;background-color: rgba(255, 255, 255, 0.7);'
 )
 +'}'
-,(rr.WebKit<534&&rr.is_mobile)&&[
-,'.b-topmenu-item {overflow: hidden;}'
-,'.b-topmenu-item_bg {bottom:-1px;}'
-]
-,'.b-topmenu-item--active {z-index: 1;}'
+,'.b-topmenu-item--active {z-index: 2;}'
 ,'.b-topmenu-item--active .bg {background-color: #FFF;margin-bottom: -2px;}'
 ,'.b-topmenu-item_link {text-indent: 8px;display: block;margin-left:2px;text-decoration: none;}'
 ,'.b-topmenu-item_text {display: block;overflow: hidden;}'
@@ -4128,16 +4139,6 @@ tmpl.topmenu=function(_,prm){
 var ns=this;
 ns.node=_('div.b-topmenu#header'
 ,_('div.b-topmenu-grd_line')
-,_('A.b-topmenu-logo_link no_underline s-logo'
-,{
-tabIndex:1,
-href:'/',
-title:"Домой"
-}
-,_('span.b-topmenu-logo_envelope s-logo_envelope')
-,_('SPAN.b-topmenu-logo_title s-logo_title'
-,"c:"
-))
 ,_('div.b-topmenu-box b-topmenu-box--x4'
 ,ns.item_compose=_('tmpl:topmenu_item'
 ,{
@@ -4170,15 +4171,7 @@ href:'#/calendar'
 tabIndex:1,
 title:"Настройки",
 href:'#/settings'
-})))
-,_('a.b-topmenu-user_link no_underline'
-,{
-tabIndex:1,
-href:'#/user'
-}
-,_('span.b-topmenu-user_text underline'
-,"vflash@eeee.ee"
-)))};
+}))))};
 tmpl.topmenu_item=function(_,prm){
 var ns=this;
 ns.node=_('div.b-topmenu-item item'+(prm.active?' b-topmenu-item--active':'')
@@ -4200,20 +4193,20 @@ ns.node=_('div.b-sidebar_folders'
 ,_('div.b-sidebar_folders-folders_sys'
 ,rr.map(['INBOX','SentBox','DraftBox','Trash'],function(v){
 return _('tmpl:folder_mail',{
-href:'#/'+v,
-active:p.active_folder==v,
-data:p.data_folders['data '+v]
+folder:p.folder,
+data:p.data_folders['data '+v]||false
 })}))
 ,_('div.b-sidebar_folders-folders_user'+(p.data_folders.user_folders.length>0?'':' b-sidebar_folders-folders_user--null')
 ,_.forEach(p.data_folders.user_folders,function(_,x){
 return _('tmpl:folder_mail',{
-active:false,
+folder:p.folder,
 data:x
 })}))))};
 tmpl.folder_mail=function(_,p){
 var ns=this
-,data=p.data
+,data=p.data||false
 ,name=data.folder.match(/^~[^\/]+\/(.*)/)[1]
+,active=p.folder=='/mailbox/'+name
 ,text
 ,href
 ,href_unseen
@@ -4235,8 +4228,8 @@ break;
 default:
 text=name;
 };
-href='#/m/folder/'+rr.urlEscape(data.folder_name);
-href_unseen='#/m/folder:unseen/'+rr.urlEscape(data.folder_name);
+href='#/mailbox/'+name;
+href_unseen='#/mailbox:unseen/'+rr.urlEscape(name);
 return _('tmpl:uMenuItem'
 ,{
 text:text,
@@ -4305,11 +4298,17 @@ elems.folder_mail=function(_,pr){
 
 cram.addEvent('open_page',function(e){
 if(e.returnValue==false)return;
-var hash=e.hash,hs=hash.toLocaleLowerCase(),x,v;
+var hash=e.hash,hs=hash.toLocaleLowerCase(),a,x,v,i;
 if(!hs||!(hs=='/mailbox'||!hs.indexOf('/mailbox/')))return;
 e.handler=cram.open_mailbox;
-e.hash='/mailbox/inbox';
-e.query_param={};
+var q=hash.match(/^\/mailbox\/([^\/\?]+)(\/(d(\w{1,10})|n(\w+)))?/)||false;
+e.hash='/mailbox/inbox'+(q[4]||q[5]?'/'+q[3]:'');
+e.query_param={
+folder:'/mailbox/'+rr.urlDecode(q[1]),
+folder_name:rr.urlDecode(q[1]),
+filter_date:q[4]||null,
+filter_next:q[5]||null
+};
 return e.returnValue=false;
 });
 cram.open_mailbox=function(e){
@@ -4333,6 +4332,12 @@ rr.styles('tmpl:maibox'
 ,'.b-page_mailbox-clear_folder_wrap {line-height: 24px;}'
 ,'.b-page_mailbox-clear_folder_go {margin-left: 1em;}'
 ,'.b-page_mailbox-clear_folder_cansel {margin-left: 1em;}'
+,'.b-page_mailbox-button_filter {color: #333 !important;padding: 2px 33px 2px 5px;cursor: pointer;background-position: 100% 50%;border-radius: 2px 2px 2px 2px;}'
+,'.b-page_mailbox-button_filter:hover {background-color: #DDDDDD;}'
+,'.b-page_mailbox-more {margin: 15px 0;}'
+,'.b-page_mailbox-more_link {cursor: pointer;background-color: #FFF;border: 1px solid #DDD;color: #000000 !important;display: block;line-height: 30px;margin: 0 auto;text-align: center;width: 300px;}'
+,'.b-page_mailbox-more_link:hover {background-color: #EEE;border-color: #DDD;}'
+,'.b-page_mailbox-more_text {}'
 );
 tmpl.mailbox_sidebar=function(_,pr){
 var ns=this;
@@ -4350,7 +4355,19 @@ extend:ns
 ,head:'bottom'
 ,head_name:"Папка «Входящие»"
 ,head_right:[
-,"1–50 из 669"
+,_('ui:uMenu'
+,{
+css:'b-page_mailbox-menu_action',
+position:'right',
+open:'click',
+node:_('a.b-page_mailbox-button_filter no_underline i-img--arrow_down'
+,_('span'
+,"Сегодня 25 июля"
+))}
+,_('div'
+,{
+style:'width:250px;height:300px;'
+}))
 ]
 }
 ,_('ui:page_head'
@@ -4397,16 +4414,16 @@ style:'width:150px;height:200px;'
 }))
 ,_('ui:uButton',{
 css:'',
-css_icon:'i-img--remove',
+css_icon:'i-img--spam',
 indent:'left',
-title:"Удалить выделенные письма",
-text:"Удалить"
+title:"Удалить в спам выделенные письма",
+text:"Это спам"
 })
 ,_('ui:uButton',{
 css:'',
-css_icon:'i-img--spam',
-title:"Удалить в спам выделенные письма",
-text:"Это спам"
+css_icon:'i-img--remove',
+title:"Удалить выделенные письма",
+text:"Удалить"
 })))
 ,ns.dialog_bounce=_('ui:page_dialog',{css:'b-page_mailbox-dialog_bounce',title:"Переадресация",debug:false}
 ,_('div.b-page_mailbox-bounce_row'
@@ -4441,40 +4458,43 @@ text:"Да"
 )))
 ,_('div'
 ,_('tmpl:mailbox_list')
-,_('ui:uPager'
-,{
-css:'b-page_mailbox-pager',
-max:20,
-num:1,
-url_mask:'#/page/%s'
-})))};
+,_('div.b-page_mailbox-more'
+,_('a.b-page_mailbox-more_link no_underline'
+,_('span.b-page_mailbox-more_text'
+,"Ещё"
+)))))};
 tmpl.mailbox_list=function(_,pr){
 var px=[
 {
+id:713,
 from:"SourceForge Resource New.",
 subj:"Ответ на ваш комментарий к хабратопику \"Хакеры украли письма с Hotmail благодаря ошибке...",
 text:" - Пользователь skaut8 ответил на ваш комментарий к …",
 date:"28 июл 2008"
 }
 ,{
+id:714,
 from:"INTUIT.RU",
 subj:"INTUIT.ru: ИНТУИТ получил новую бессрочную лицензию",
 text:" - INTUIT.ru: ИНТУИТ получил новую бессрочную лицензию …",
 date:"1 июл 2008"
 }
 ,{
+id:715,
 from:"МойСклад",
 subj:"Посетите наш стенд на ECOM Expo и другие новости",
 text:" - Здравствуйте, уважаемые пользователи сервиса …",
 date:"20 июл 2008"
 }
 ,{
+id:716,
 from:"internet_payment",
 subj:"Информация о платеже",
 text:" - Номер платежа: 925876 Название магазина: Аэрофлот …",
 date:"9 июл 2008"
 }
 ,{
+id:717,
 from:"McAfee",
 subj:"Скидка 50% при обновлении защиты компьютера Sony",
 text:" - McAfee | VAIO рекомендует McAfee и Sony. Идеальный дуэт. Система …",
@@ -4483,7 +4503,7 @@ date:"10 июл 2008"
 ];
 var ns=this,unread=true;
 ns.node=_('div.b-mbox_table'
-,_.forEach(100,function(){
+,_.forEach(50,function(){
 var x=Math.floor(Math.random()*(px.length-0.1))
 x=px[x];
 x.unread=unread?x.unread=unread=Math.random()>0.2:false
@@ -4495,8 +4515,10 @@ rr.styles('tmpl:maibox_row'
 ,'.b-mbox_row-check {cursor: pointer;left:3px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
 ,'.b-mbox_row-read {cursor: pointer;left:30px; top:5px; width:16px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
 ,'.b-mbox_row-attach {cursor: default;visibility: hidden;right:120px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
-,'.b-mbox_row-date {cursor: default;text-align: right;right: 30px; top:0; width: 85px; height:30px;}'
+,'.b-mbox_row-date {cursor: pointer;text-align: right;right: 30px; top:4px; width: 82px; height:22px;line-height:22px;padding-right:3px;color:#000 !important;}'
 ,'.b-mbox_row-favorite {cursor: pointer;right:3px; top:5px; width:16px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
+,'.b-mbox_row-date:hover {background-color:#E4E4E4;border-radius: 2px;}'
+,'.b-mbox_row--selected .b-mbox_row-date:hover {background-color:#B6cccc;}'
 ,'.b-mbox_row-link {display: inline-block;line-height: 18px;margin-top: 6px;color:#575757;overflow: hidden;max-width:100%;-o-text-overflow: ellipsis; text-overflow: ellipsis;}'
 ,'.b-mbox_row-from {color: #888;font-size: 12px;}'
 ,'.b-mbox_row-subj {margin-left: 10px;color:#000; font-size: 13px;}'
@@ -4505,6 +4527,7 @@ rr.styles('tmpl:maibox_row'
 ,'.b-mbox_row--unread .b-mbox_row-from  {color: #575757;}'
 ,'.b-mbox_row--favorite {background-color:#FDFFE6;border-color: #D9E188;z-index:1;}'
 ,'.b-mbox_row--selected {background-color:#B6E1F3;border-color:#9EA4B3; z-index: 2;}'
+,'.b-mbox_row--selected + .b-mbox_row--selected {border-top-color:#FFF;}'
 ,'.b-mbox_row--has_attach {padding-right:160px;}'
 ,'.b-mbox_row--has_attach .b-mbox_row-attach {visibility: visible;}'
 ,'.b-mbox_row-check.i-img--checkbox-inactive {opacity:0.7;}'
@@ -4554,7 +4577,11 @@ href:'#'
 ,{
 title:"Прикрепленные файлы"
 })
-,_('span.b-mbox_row-date b-mbox_row-ap'
+,_('a.b-mbox_row-date b-mbox_row-ap no_underline'
+,{
+title:'Фильтр от этого письма',
+href:'#/mailbox/inbox/n'+p.id
+}
 ,_.text(p.date)))};
 
 
@@ -4592,7 +4619,7 @@ init_event:function(ui){
 /* URL: /js/mail_new/tmpl/tmpl_page_compose.src.js */
 
 rr.styles('tmpl:page_compose'
-,'.b-page_compose-wrap_send {border:3px solid #CCCCCC;display:inline-block;margin:-3px 5px -3px 0;position: relative;left:-3px;vertical-align: top;}'
+,'.b-page_compose-wrap_send {border:3px solid transparent;display:inline-block;margin:-3px 5px -3px 0;position: relative;left:-3px;vertical-align: top;}'
 ,'.b-page_compose-modes_toolbar {margin-top:10px;padding:1px 0;text-align:right;font-size:80%;}'
 ,'.b-page_compose-modes_pleft {float:left;text-align:left;}'
 ,'.b-page_compose-vkey {cursor:pointer;}'
@@ -5517,7 +5544,72 @@ return n;
 tmpl.rc_calendar_wrap=function(_,pr){
 var ns=this;
 ns.node=_('div.rc-calendar'
-,ns.toolbar=_('ui:rc_toolbar'))}
+,ns.toolbar=_('ui:rc_toolbar'))};
+tmpl.rc_page_edit=function(_,p){
+var ns=this;
+function gr_(nm,x,a1,a2,a3,a4){
+var u;
+return _('tr',{css:nm}
+,_('td.lb'
+,!x.label?" ":_('label',{htmlFor:x.name||''}
+,_('span'
+,_.text(x.label))))
+,_('td.cp'
+,_('div.c'
+,a1
+,a2
+,a3
+,a4
+)))};
+ns.page=_('ui:page'
+,{
+extend:ns
+,pid:'rcalendar'
+,document_title:"Календарь"
+,css:'b-rc_page_edit'
+,css_capion:'b-rc_page_edit-capion'
+,head:'none'
+}
+,_('ui:page_head'
+,_('tmpl:uToolbar'
+,{
+css:'',
+right:[
+]
+}
+,_('ui:uButton',{
+css:'',
+first:true,
+title:"Сохранить",
+text:"Сохранить"
+})
+,_('ui:uButton',{
+css:'',
+title:"Вернуться в календарь",
+text:"Отмена"
+})))
+,_('div.b-rc_dialog_new-body'
+,_('table.b-rc_dialog_new-table',{cellSpacing:0,cellPadding:0,border:0}
+,_('tbody'
+,gr_('b-rc_dialog_new-what',{name:"rc:textWhat",label:"What text"}
+,_('input',{name:'rc:textWhat',value:''}))
+,gr_('b-rc_dialog_new-pcalendar',{name:"rc:pcalendar",label:"Calendar"}
+,_('select',{name:'rc:pcalendar',value:''}
+,_('option',{value:'c-xxx-xxx-xxx-xx1'},_.text('My calendar-1'))
+,_('option',{value:'c-xxx-xxx-xxx-xx2'},_.text('My calendar-2'))))
+,gr_('b-rc_dialog_new-allday',false
+,_('label'
+,_('input',{name:'rc:allday',type:'checkbox'})
+,_('span.lb',"All day")))
+,gr_('b-rc_dialog_new-dtStart',{name:"rc:startDate",label:"Start"}
+,_('input.d',{name:'rc:startDate',value:'00'})
+,_('input.t',{name:'rc:startTime',value:'00'}))
+,gr_('b-rc_dialog_new-dtEnd',{name:"rc:endDate",label:"End"}
+,_('input.d',{name:'rc:endDate',value:rr.trim('00')})
+,_('input.t',{name:'rc:endTime',value:rr.trim('00')}))))
+,_('div.b-rc_dialog_new-cmn'
+,_('input.save',{type:'button',value:"Save",name:"rc:save"})
+,_('input.cancel',{type:'button',value:"Cancel",name:"rc:cancel"}))))};
 
 
 /* URL: /js/calendar/ui_page.src.js */

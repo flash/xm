@@ -223,5 +223,106 @@ tmpl.rc_calendar_wrap = function (_, pr) {
 
 	ns.node = _('div.rc-calendar'
 		, ns.toolbar = _('ui:rc_toolbar')
-		);
-}
+	);
+};
+
+
+
+tmpl.rc_page_edit = function (_, p) {
+	var ns = this;
+	function gr_(nm, x, a1, a2, a3, a4) {		var u;
+		return _('tr', {css: nm}
+			, _('td.lb'
+				, !x.label ? " " : _('label', {htmlFor: x.name||''}
+					, _('span'						, _.text(x.label)
+					)
+				)
+			)
+			, _('td.cp'				, _('div.c'
+					, a1
+					, a2
+					, a3
+					, a4
+				)
+			)
+		)
+	};
+
+
+	ns.page = _('ui:page' 
+		, {
+			extend: ns
+			, pid: 'rcalendar'
+			, document_title: "Календарь"
+
+			, css: 'b-rc_page_edit'
+			, css_capion: 'b-rc_page_edit-capion'
+
+			, head: 'none'
+			//, head_name: "Календарь"
+			//, head_right: []
+		}
+
+		, _('ui:page_head'
+			, _('tmpl:uToolbar'
+				, {
+					css: '',
+					right: [
+					]
+				}
+
+
+				, _('ui:uButton', {
+					css: '',
+					//icon: 'only', 
+					//css_icon: '',
+					//indent: 'left',
+					first: true,
+					title: "Сохранить",
+					text: "Сохранить"
+				})
+
+				, _('ui:uButton', {
+					css: '',
+					//css_icon: '',
+					title: "Вернуться в календарь",
+					text: "Отмена"
+				})
+			)
+		) //
+
+		
+		
+		, _('div.b-rc_dialog_new-body'
+			, _('table.b-rc_dialog_new-table', {cellSpacing: 0,cellPadding: 0,border: 0}
+				, _('tbody'					, gr_('b-rc_dialog_new-what', {name: "rc:textWhat",label: "What text"}
+						, _('input', {name: 'rc:textWhat', value: ''})					)
+
+					, gr_('b-rc_dialog_new-pcalendar', {name: "rc:pcalendar", label: "Calendar"}
+						, _('select', {name: 'rc:pcalendar', value: ''}							, _('option', {value:'c-xxx-xxx-xxx-xx1'}, _.text('My calendar-1'))							, _('option', {value:'c-xxx-xxx-xxx-xx2'}, _.text('My calendar-2'))
+						)
+					)
+
+					, gr_('b-rc_dialog_new-allday', false 
+						, _('label'							, _('input', {name: 'rc:allday', type: 'checkbox'})
+							, _('span.lb', "All day")
+						)					)
+
+					, gr_('b-rc_dialog_new-dtStart', {name: "rc:startDate", label: "Start"}
+						, _('input.d', {name: 'rc:startDate', value: '00'})
+						, _('input.t', {name: 'rc:startTime', value: '00'})
+					)
+
+					, gr_('b-rc_dialog_new-dtEnd', {name: "rc:endDate",label: "End"}
+						, _('input.d', {name: 'rc:endDate', value: rr.trim('00')} )
+						, _('input.t', {name: 'rc:endTime', value: rr.trim('00')} )
+						)
+				)
+			)
+
+			, _('div.b-rc_dialog_new-cmn'				, _('input.save', {type:'button', value: "Save", name:"rc:save"})				, _('input.cancel', {type:'button', value: "Cancel", name:"rc:cancel"})
+			)
+		)
+
+	)
+};

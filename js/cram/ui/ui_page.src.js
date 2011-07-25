@@ -52,7 +52,7 @@ elems.page = rr.new_class({
 			else if (type < 0) {
 				switch(n.elementType) {
 					case 'page_dialog':
-						n.parent = this;
+						//n.parent = this;
 
 						this.nodes.box_dialogs.appendChild(n.node);
 						if (rr.indexOf(this.dialogs, n) < 0) {
