@@ -10,10 +10,10 @@ cram.addEvent('open_page', function (e) {
 
 	var q = hash.match(/^\/mailbox\/([^\/\?]+)(\/(d(\w{1,10})|n(\w+)))?/) || false;
 
-	e.hash = '/mailbox/inbox' + (q[4] || q[5] ? '/' + q[3] : '');
+	e.hash = '/mailbox/' +(q[1]||'inbox') + (q[4] || q[5] ? '/' + q[3] : '');
 
 	e.query_param = {
-		folder: '/mailbox/' + rr.urlDecode(q[1]),
+		folder_box: 'mailbox',
 		folder_name: rr.urlDecode(q[1]),
 		
 		filter_date: q[4] || null,

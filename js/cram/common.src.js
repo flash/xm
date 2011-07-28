@@ -2,16 +2,48 @@
 //rr.domReady.stop = rr.IE<8 || rr.is_j2me || rr.Opera<10;
 if (rr.domReady.stop) {
 	location.href = '/nojs';
+};
+
+
+
+
+(function () {
+
+	if (window.opera) document.write('<meta name="viewport" content="width=device-width,initial-scale=1" />');
+
+	var is_outerWidth;
+	try { is_outerWidth = window.outerWidth > 0 } catch (e) { };
+
+	//var sw = window.opera ? Math.max(window.outerWidth || cscreen.width, window.outerHeight || cscreen.height) : screen.width;
+	var sw = is_outerWidth ? Math.max(outerWidth, outerHeight) : screen.width;
+	var de = document.documentElement;
+
+	//outerWidth
+
+	function get_sw(sw) {
+		return sw <= 900 && !rr.Gecko ? 900 : sw <= 980 ? 980 : sw <= 1024 ? 1024 : sw <= 1200 ? 1200 : sw <= 1400 ? 1400 : 2000;
 	};
 
-(function() {
-	var sw = window.opera ? Math.max(screen.width, screen.height) : screen.width;
+	sw = get_sw(sw);
 
-	document.documentElement.id = 'js';
-	document.documentElement.className += " rnd-"+Math.floor(Math.random()*3)
-		+ ' sw-'+(sw <= 980 ? 980 : sw <= 1024 ? 1024 : sw <= 1200 ? 1200 : sw <= 1400 ? 1400 : 2000) // screen size width
-		+ ' skin-' + ((window._settings||false)['skin'] || 'default'); // skin
-	})();
+	de.id = 'js';
+	de.className += " rnd-" + Math.floor(Math.random() * 3)
+		+ ' sw-' + sw // screen size width
+		+ ' skin-' + ((window._settings || false)['skin'] || 'default'); // skin
+
+	if (is_outerWidth) {
+		var stm;
+		rr.addHandler(document, 'resize', function () {
+			if (stm) clearTimeout(stm);
+
+			stm = setTimeout(function () {
+				stm = false;
+				var x = get_sw(Math.max(outerWidth, outerHeight));
+				if (x !== sw) rr.css_set_('sw-', de, sw = x);
+			}, 30);
+		});
+	};
+})();
 
 /*
 new function() {
@@ -508,8 +540,10 @@ cram.getFormParams = function(frm) {
 cram.addEvent('page_connect', function (e) {
 	var ns = this.mainframe.nodes.topmenu, pid = (e.page || false).pid;
 
-	rr.css_set('b-topmenu-item--active', ns.item_compose.node, pid == 'compose'); 
-	rr.css_set('b-topmenu-item--active', ns.item_mailbox.node, pid == 'mailbox');
+	rr.css_set('b-topmenu-item--active', ns.item_reader.node, pid == 'reader'); 
+	rr.css_set('b-topmenu-item--active', ns.item_mailbox.node, pid == 'mailbox' || pid == 'compose');
 	rr.css_set('b-topmenu-item--active', ns.item_calendar.node, pid == 'calendar');
 });
+
+
 

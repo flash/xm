@@ -34,7 +34,7 @@ rr.styles('tmpl:umenu'
 	, '.b-umenu_item-right {display:block;float:right;margin-left: 4px;}' //overflow:hidden;
 	, '.b-umenu_item-left {display:block;overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis;}'
 
-	, '.b-umenu_item-icon {margin-right: -1px;display: inline-block;width:20px; height:20px;overflow: hidden;vertical-align: top;}'
+	, '.b-umenu_item-icon {background-position: 50% 50%;margin-right: -1px;display: inline-block;width:20px; height:20px;overflow: hidden;vertical-align: top;}'
 	, '.b-umenu_item-text {display: inline;margin-left:3px;padding:0;vertical-align: top;}'
 
 	, '.b-umenu_item-infor {color:#999999;font-size:11px;cursor:pointer;padding:0 3px;margin:0 1px;vertical-align:top;}'

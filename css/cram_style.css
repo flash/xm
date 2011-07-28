@@ -33,9 +33,9 @@ html, .font_global {
 	line-height: 1.285715;
 	}
 
-
 /* ----- mobile ----- */
-body {min-width:800px;margin: 0 auto;}
+body {min-width:800px;margin: 0 auto;-moz-box-sizing: border-box;box-sizing: border-box;}
+.sw-900  body {max-width:900px;}
 .sw-980  body {max-width:980px;}
 .sw-1024 body {max-width:1024px;}
 .sw-1200 body {max-width:1200px;}
@@ -171,6 +171,10 @@ h1.last, h2.last, h3.last, h4.last, h5.last, h6.last, h7.last {
 .i-img--refresh, .i-hover_img:hover .i-img_hover--refresh, .i-hover_img--refresh:hover .i-img_hover--refresh, .i-img_hover--refresh:hover {background-image:url("../i/i_refresh.png");background-repeat: no-repeat;}
 
 
+.i-img--new_mail, .i-hover_img:hover .i-img_hover--new_mail, .i-hover_img--new_mail:hover .i-img_hover--new_mail, .i-img_hover--new_mail:hover {background-image:url(http://vflash.ru/xm/i/fatcow-hosting-icons-2400/16x16/page_white_edit.png);background-repeat: no-repeat;}
+
+
+
 
 
 
@@ -233,10 +237,14 @@ h1.last, h2.last, h3.last, h4.last, h5.last, h6.last, h7.last {
 /* --- style demo --- */
 .skin-demo body {
 	background-image: url("../i/linen.jpg");
-	padding: 75px 15px 30px;
-	}
+	padding: 0 15px 30px;
+}
+.skin-demo #topline {
+	margin: 0 -15px;
+}
 
 .skin-demo #wrapper {
+	margin-top: 50px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 
@@ -253,9 +261,10 @@ h1.last, h2.last, h3.last, h4.last, h5.last, h6.last, h7.last {
 	}
 
 .skin-demo #footer {
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: #FFF;
 	-moz-border-radius: 0 0 3px 3px;
 	border-radius: 0 0 3px 3px;
+	border-top: 1px dashed #BBBBBB;
 	}
 
 
@@ -278,550 +287,63 @@ h1.last, h2.last, h3.last, h4.last, h5.last, h6.last, h7.last {
 
 
 
+/* --- style demo2 --- */
 
-/* --- style cars --- */
-.skin-cars #header {
-	background-color: #FCEBB8;
-	background-image: url("/m/00/i/header-cars.jpg");
-	background-position: 0 0;
+.skin-demo2 {
+	background-image: url("/xm/i/bg_skin_3.jpg");
+	background-position: 50% -29px;
+	background-repeat: no-repeat;
+}
+
+.skin-demo2 body {
+	padding: 0 15px 30px;
+}
+
+.skin-demo2 #topline {
+	margin: 0 -15px;
+}
+
+.skin-demo2 #wrapper {
+	margin-top: 50px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+	-webkit-box-shadow: 0 0px 3px #000;
+	box-shadow: 0 0px 3px #000;
+
+	max-width: 1050px;
 	}
 
-.skin-cars a {
+.skin-demo2 #header {
+	background-color: rgba(255, 255, 255, 0.2);
+	-moz-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0;
+	}
+
+.skin-demo2 #footer {
+	background-color: #FFF;
+	-moz-border-radius: 0 0 3px 3px;
+	border-radius: 0 0 3px 3px;
+	border-top: 1px dashed #BBBBBB;
+	}
+
+
+.skin-demo2 a {
 	color: #0A83BF;
 	}
 
-
-.skin-cars .s-menu_bg:hover {
-	background-color: #D8EEF7;
-	}
-.skin-cars .s-menu_bg--active,
-.skin-cars .s-menu_bg--active:hover {
-	background-color: #B6E1F3;
-	}
-
-
-
-
-/* --- style sweater --- */
-.skin-sweater #header {
-	background-color: #88A1AB;
-	background-image: url("/m/00/i/header-sweater.png");
-	background-position: 50% -109px;
-	}
-
-.skin-sweater a {
-	color: #3E6374;
-	}
-
-
-.skin-sweater .s-menu_bg:hover {
-	background-color: #A6C1CD;
-	}
-.skin-sweater .s-menu_bg--active,
-.skin-sweater .s-menu_bg--active:hover {
-	background-color: #76A0B2;
-	}
-
-
-
-
-/* --- style anonymous --- */
-.skin-anonymous #header {
-	background-color: #FF6600;
-	background-image: none;
-	}
-.skin-anonymous a {
-	color: #F74D00;
-	}
-
-.skin-anonymous .s-menu_bg:hover {
-	background-color: #D1D1D1;
-	}
-.skin-anonymous .s-menu_bg--active,
-.skin-anonymous .s-menu_bg--active:hover {
-	background-color: #C0C0C0;
-	}
-/*
-.skin-anonymous body, .skin-anonymous .b-topmenu-item--active .bg {
-	background-color: #EAEAEA;
-	}
-	*/
-.skin-anonymous .ramail-logo_envelope {
-	background-image: none !important;
-	}
-.skin-anonymous .ramail-logo,
-.skin-anonymous.lang-ru .ramail-logo,
-.skin-anonymous.rnd-0 .ramail-logo {
-	background-image: url("/m/00/i/branded/anonymous/ramail-anonymous.png");
-	background-position: 0 0;
-	background-repeat: no-repeat;
-	}
-
-.skin-anonymous.rnd-1 .ramail-logo {
-	background-image: url("/m/00/i/branded/anonymous/ramail-longcat.png");
-	}
-
-
-
-
-
-
-/* --- style seasons winter --- */
-.skin-seasons.winter #header {
-	background: url("/m/00/i/header-seasons_winter.jpg") no-repeat scroll 0 0 #2B5390;
-	}
-
-.skin-seasons.winter a {
-	color: #186FB2;
-	}
-
-
-.skin-seasons.winter .s-menu_bg:hover {
-	background-color: #CAE0EA;
-	}
-.skin-seasons.winter .s-menu_bg--active,
-.skin-seasons.winter .s-menu_bg--active:hover {
-	background-color: #BDD9E5;
-	}
-
-
-
-/* --- style seasons spring --- */
-.skin-seasons.spring #header {
-	background: url("/m/00/i/header-seasons_spring.jpg") no-repeat scroll 0 0 #5E7235;
-	}
-
-.skin-seasons.spring a {
-	color: #145628;
-	}
-
-
-.skin-seasons.spring .s-menu_bg:hover {
-	background-color: #CCE1AB;
-	}
-.skin-seasons.spring .s-menu_bg--active,
-.skin-seasons.spring .s-menu_bg--active:hover {
-	background-color: #B1D17F;
-	}
-
-.skin-seasons.spring .s-border_color {
-	border-color: #B1D17F;
-	}
-
-
-/* --- style women --- */
-.skin-women #header {
-	background: url("/m/00/i/header-women.jpg") no-repeat scroll 0 100% #FBD3B9;
-	}
-
-.skin-women a {
-	color: #AB000C;
-	}
-
-
-.skin-women .s-menu_bg:hover {
-	background-color: #EFD2C6;
-	}
-
-.skin-women .s-menu_bg--active,
-.skin-women .s-menu_bg--active:hover {
-	background-color: #E7BAA8;
-	}
-
-
-
-
-/* --- style business --- */
-.skin-business #header {
-	background: url("/m/00/i/header-business.jpg") no-repeat scroll 0 100% #6EBDDC;
-	}
-
-.skin-business a {
-	color: #658FA5;
-	}
-
-
-.skin-business .s-menu_bg:hover {
-	background-color: #C1DDEC;
-	}
-
-.skin-business .s-menu_bg--active,
-.skin-business .s-menu_bg--active:hover {
-	background-color: #9ECBE2;
-	}
-
-
-
-
-/* --- style sticky_fingers --- */
-.skin-sticky_fingers #header {
-	background: url("/m/00/i/header-sticky_fingers.png") repeat-x scroll 0 -90px #1A3252;
-	padding-bottom: 100px;
-	}
-
-.skin-sticky_fingers .ramail-logo_envelope {
-	background-image: none !important;
-	}
-
-.skin-sticky_fingers .ramail-logo,
-.skin-sticky_fingers.lang-ru .ramail-logo {
-	background: url("/m/00/i/ramail-sticky_fingers.png") no-repeat scroll 0 0 transparent;
-	bottom: -5px;
-	height: 105px;
-	width: 270px;
-	z-index: 2;
-	}
-
-.skin-sticky_fingers.lang-by .ramail-logo,
-.skin-sticky_fingers.lang-ua .ramail-logo {
-	background-position: -540px 0;
-	}
-
-.skin-sticky_fingers.lang-en .ramail-logo {
-	background-position: -270px 0;
-	}
-
-.skin-sticky_fingers .r-topline {
-	background-color: transparent;
-	}
-
-.skin-sticky_fingers .b-topmenu-box {
-	left: 274px;
-	bottom: 32px;
-	}
-
-.skin-sticky_fingers .b-topmenu-avatar_link {
-	bottom: 28px;
-	}
-
-.skin-sticky_fingers .b-topmenu-grd_line {
-	display:none;
-	}
-
-.skin-sticky_fingers .b-topmenu-item_bg {
-	background: url("/m/00/i/topmenu-sticky_fingers.png") repeat-x scroll 0 0 transparent;
-	top: -7px;
-	bottom: -6px;
-	}
-
-.skin-sticky_fingers .b-topmenu-item--active .bg {
-	background-color: transparent;
-	background-position: 0 -45px;
-	}
-
-
-.skin-sticky_fingers a {
-	color: #186FB2;
-	}
-
-.skin-sticky_fingers .b-topmenu a {
+.skin-demo2 #header a, .skin-demo #footer a {
 	color: #000;
 	}
 
-.skin-sticky_fingers #header a,
-.skin-sticky_fingers .b-topmenu-item--active a {
-	color: #FFF;
+.skin-demo2 .s-menu_bg:hover {
+	background-color: #eee;
 	}
 
-.skin-sticky_fingers .r-topline_projects,
-.skin-sticky_fingers .r-topline_profile {
-    padding-top: 5px;
-}
-
-
-.skin-sticky_fingers .s-menu_bg:hover {
-	background-color: #D1C5B9;
-	}
-
-.skin-sticky_fingers .s-menu_bg--active,
-.skin-sticky_fingers .s-menu_bg--active:hover {
-	background-color: #A38C74;
+.skin-demo2 .s-menu_bg--active,
+.skin-demo2 .s-menu_bg--active:hover {
+	background-color: #ccc;
 	}
 
 
 
-
-/* --- style beasts --- */
-.skin-beasts #header {
-	background: url("/m/00/i/branded/beasts/winter/header-beasts_twilight.jpg") no-repeat scroll 50% 50% #E0CBD2;
-	}
-
-.skin-beasts a {
-	color: #186FB2;
-	}
-
-
-.skin-beasts .s-menu_bg:hover {
-	background-color: #CAE0EA;
-	}
-
-.skin-beasts .s-menu_bg--active,
-.skin-beasts .s-menu_bg--active:hover {
-	background-color: #BDD9E5;
-	}
-
-
-
-
-
-/* --- style macos --- */
-.skin-macos #header {
-	background: url("/m/00/i/header-macos.jpg") no-repeat scroll 0 0 #889BA6;
-	}
-
-.skin-macos a {
-	color: #5E6D82;
-	}
-
-
-.skin-macos .s-menu_bg:hover {
-	background-color: #BBC6CE;
-	}
-
-.skin-macos .s-menu_bg--active,
-.skin-macos .s-menu_bg--active:hover {
-	background-color: #95A6B3;
-	}
-
-
-
-
-
-/* --- style matrix --- */
-.skin-matrix #header {
-	background: url("/m/00/i/header-matrix.jpg") repeat-x 0 0 #237283;
-	}
-
-.skin-matrix a {
-	color: #226063;
-	}
-
-
-.skin-matrix .s-menu_bg:hover {
-	background-color: #9ED7DA;
-	}
-
-.skin-matrix .s-menu_bg--active,
-.skin-matrix .s-menu_bg--active:hover {
-	background-color: #64C0C4;
-	}
-
-
-
-
-
-
-/* --- style matrix --- */
-.skin-matrix_black #header {
-	background: url("/m/00/i/header-matrix-black.jpg") repeat-x 0 0 #237283;
-	}
-
-.skin-matrix_black a {
-	color: #226063;
-	}
-
-
-.skin-matrix_black .s-menu_bg:hover {
-	background-color: #9ED7DA;
-	}
-
-.skin-matrix_black .s-menu_bg--active,
-.skin-matrix_black .s-menu_bg--active:hover {
-	background-color: #64C0C4;
-	}
-
-
-
-
-
-
-/* --- style flight --- */
-.skin-flight #header {
-	background: url("/m/00/i/header-flight.jpg") no-repeat 0 0 #5096BE;
-	}
-
-.skin-flight a {
-	color: #466777;
-	}
-
-
-.skin-flight .s-menu_bg:hover {
-	background-color: #C1DDEC;
-	}
-
-.skin-flight .s-menu_bg--active,
-.skin-flight .s-menu_bg--active:hover {
-	background-color: #9ECBE2;
-	}
-
-
-
-
-
-
-/* --- style freedom --- */
-.skin-freedom #header {
-	background: url("/m/00/i/header-freedom.jpg") no-repeat 0 50% #5096BE;
-	}
-
-.skin-freedom a {
-	color: #236261;
-	}
-
-
-.skin-freedom .s-menu_bg:hover {
-	background-color: #CAE5F1;
-	}
-
-.skin-freedom .s-menu_bg--active,
-.skin-freedom .s-menu_bg--active:hover {
-	background-color: #ACD7EA;
-	}
-
-
-
-
-
-
-/* --- style moonsun --- */
-.skin-moonsun #header {
-	background: url("/m/00/i/header-moonsun.jpg") no-repeat 50% 0 #3864C3;
-	}
-
-.skin-moonsun a {
-	color: #186FB2;
-	}
-
-
-.skin-moonsun .s-menu_bg:hover {
-	background-color: #E9D4BA;
-	}
-
-.skin-moonsun .s-menu_bg--active,
-.skin-moonsun .s-menu_bg--active:hover {
-	background-color: #E1C39E;
-	}
-
-
-
-
-
-
-/* --- style sport --- */
-.skin-sport #header {
-	background: url("/m/00/i/header-sport.jpg") no-repeat 0 50% #2A232A;
-	}
-
-.skin-sport a {
-	color: #6210BC;
-	}
-
-
-.skin-sport .s-menu_bg:hover {
-	background-color: #C6D0EF;
-	}
-
-.skin-sport .s-menu_bg--active,
-.skin-sport .s-menu_bg--active:hover {
-	background-color: #A6B6E7;
-	}
-
-
-
-
-
-
-/* --- style stylish --- */
-.skin-stylish #header {
-	background: url("/m/00/i/header-stylish.jpg") no-repeat 0 100% #FCCEAD;
-	}
-
-.skin-stylish a {
-	color: #BE0E0E;
-	}
-
-
-.skin-stylish .s-menu_bg:hover {
-	background-color: #FFD2CD;
-	}
-
-.skin-stylish .s-menu_bg--active,
-.skin-stylish .s-menu_bg--active:hover {
-	background-color: #FFA99F;
-	}
-
-
-
-
-
-
-/* --- style fantasy --- */
-.skin-fantasy #header {
-	background: url("/m/00/i/header-fantasy.jpg") no-repeat 0 0 #413D0D;
-	}
-
-.skin-fantasy a {
-	color: #294D31;
-	}
-
-
-.skin-fantasy .s-menu_bg:hover {
-	background-color: #B5B3CB;
-	}
-
-.skin-fantasy .s-menu_bg--active,
-.skin-fantasy .s-menu_bg--active:hover {
-	background-color: #8F8DB1;
-	}
-
-
-
-
-
-
-/* --- style fantasy --- */
-.skin-fantasy #header {
-	background: url("/m/00/i/header-fantasy.jpg") no-repeat 0 0 #413D0D;
-	}
-
-.skin-fantasy a {
-	color: #294D31;
-	}
-
-
-.skin-fantasy .s-menu_bg:hover {
-	background-color: #B5B3CB;
-	}
-
-.skin-fantasy .s-menu_bg--active,
-.skin-fantasy .s-menu_bg--active:hover {
-	background-color: #8F8DB1;
-	}
-
-
-
-
-
-
-/* --- style football --- */
-
-.skin-football #header {
-	background: url("/m/00/i/header-football.jpg") no-repeat 0 0 #160007;
-	}
-.skin-football .r-topline {
-	background-color: transparent;
-	}
-
-.skin-football a {
-	color: #65BD19;
-	}
-
-
-.skin-football .s-menu_bg:hover {
-	background-color: #C3E8BF;
-	}
-
-.skin-football .s-menu_bg--active,
-.skin-football .s-menu_bg--active:hover {
-	background-color: #C3E8BF;
-	}

@@ -1,5 +1,13 @@
 
+rr.styles('tmpl:d'
+	, '.b-sidebar_folders-tools {margin-top:3px;}' //text-align: center; padding-left: 5px;
+	, '.b-sidebar_folders-compose .b-umenu_item-text {margin-left:10px;font-weight: bold;}'
+	, '.b-sidebar_folders-folders {margin-top:15px;}'
+	, '.b-sidebar_folders-more {background-position: 100% 50%;color: #575757 !important;margin-left: 0px;padding: 1px 20px 1px 5px;}'
+	, '.b-sidebar_folders-more:hover {color: #000 !important;}'
 
+	, '.b-menu_sidebar_folders {margin-left:-1px;}'
+);
 
 
 tmpl.sidebar_folders = function (_, p) {
@@ -8,6 +16,58 @@ tmpl.sidebar_folders = function (_, p) {
 	;
 
 	ns.node = _('div.b-sidebar_folders'
+		, _('div.b-sidebar_folders-tools'
+	/*
+	, _('ui:uButton', {
+	css: 'b-sidebar_folders-compose',
+	css_icon: 'i-img--edit',
+	icon: 'left',
+
+	first: 'left',
+	//group: 'right',
+	title: "Написать письмо",
+	text: "Написать письмо"
+	})
+	*/
+
+
+			, _('tmpl:uMenuItem'
+				, {
+					text: "Написать письмо",
+					href: '#/compose'
+					, css: 'b-sidebar_folders-compose'
+					//, css_icon: 'i-img--send_mail',
+					, icon: 'i-img--new_mail'
+					//, icon: true
+				}
+			)
+
+	/*
+	, _('tmpl:uMenuItem'
+	, {
+	text: "Новое письмо",
+	href: '#/'
+	, css: ''
+	//, css_icon: 'i-img--send_mail',
+	, icon: 'i-img--new_mail'
+	, icon: true
+	}
+	)
+	*/
+
+	/*
+	, _('tmpl:uMenuItem'
+	, {
+	text: "Адресная книга",
+	href: '#/contacts'
+	//, css_icon: 'i-img--send_mail',
+	, icon: 'i-img--addr'
+	//, icon: true
+	}
+	)
+	*/
+		)
+
 		, _('div.b-sidebar_folders-folders'
 			, _('div.b-sidebar_folders-folders_sys'
 				, rr.map(['INBOX', 'SentBox', 'DraftBox', 'Trash'], function (v) {
@@ -18,14 +78,38 @@ tmpl.sidebar_folders = function (_, p) {
 				})
 			)
 
-			, _('div.b-sidebar_folders-folders_user' + (p.data_folders.user_folders.length > 0 ? '' : ' b-sidebar_folders-folders_user--null')
-				, _.forEach(p.data_folders.user_folders, function (_, x) {
-					return _('tmpl:folder_mail', {
-						folder: p.folder,
-						data: x
-					});
-				})
+			, _('ui:uMenu'
+				, {
+					css: 'b-menu_sidebar_folders'
+					, position: 'left' //'right/left',
+					, open: 'click' //auto|click|hover
+					//, debug: true
+
+					, node: 
+						_('a.b-sidebar_folders-more i-img--arrow_down s-menu_bg', { href: '#/' }
+							, "ещё"
+							)
+				}
+
+				, _('div'
+					, {
+						style: 'width:200px;margin: 0pt 1px;' //height:250px;
+					}
+
+					, _('div.b-sidebar_folders-folders_user' + (p.data_folders.user_folders.length > 0 ? '' : ' b-sidebar_folders-folders_user--null')
+						, _.forEach(p.data_folders.user_folders, function (_, x) {
+							return _('tmpl:folder_mail', {
+								folder: p.folder,
+								data: x
+							});
+						})
+					)
+				)
 			)
+
+
+			/*
+			*/
 		)
 	)
 };

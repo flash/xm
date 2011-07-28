@@ -63,9 +63,9 @@ tmpl.mailbox_page = function (_, pr) {
 						position: 'right', //'right/left',
 						open: 'click', //auto|click|hover
 						//debug: true,
-						
+
 						node: _('a.b-page_mailbox-button_filter no_underline i-img--arrow_down'
-							, _('span'
+							, _('span.b-page_mailbox-filter_textwrap'
 								, "Сегодня 25 июля"
 							)
 						)
@@ -105,6 +105,18 @@ tmpl.mailbox_page = function (_, pr) {
 							title: "Найти",
 							text: "Найти"
 						})
+
+					/*
+					, _('ui:uButton', {
+					css: '',
+					icon: 'only',
+					css_icon: 'i-img--refresh',
+					indent: 'left',
+					first: 'right',
+					title: "Обновить данные",
+					text: "Обновить"
+					})
+					*/
 
 					]
 				}
@@ -219,27 +231,36 @@ tmpl.mailbox_page = function (_, pr) {
 		) //
 
 
+		, _('div', {style: 'background-color: #DFEFFE;line-height: 24px;margin: 10px 0;padding: 0 10px;overflow: hidden;white-space: nowrap;'}
+			, _('a', {href: '/'}
+				, "Ищешь стиральную машину?"
+				)
+			, ' '
+			, _('a', {href: '/'}
+				, "Фирменный магазин Кайзер! Скидки! Бесплатные доставка и установка!"
+				)
+		)
 		, _('div'
 			, _('tmpl:mailbox_list')
 
 			, _('div.b-page_mailbox-more'
-				,_('a.b-page_mailbox-more_link no_underline'
+				, _('a.b-page_mailbox-more_link no_underline'
 					, _('span.b-page_mailbox-more_text'
 						, "Ещё"
 					)
 				)
 			)
 
-			/*
-			, _('ui:uPager'
-				, {
-					css: 'b-page_mailbox-pager',
-					max: 20,
-					num: 1,
-					url_mask: '#/page/%s'
-				}
-			)
-			*/
+	/*
+	, _('ui:uPager'
+	, {
+	css: 'b-page_mailbox-pager',
+	max: 20,
+	num: 1,
+	url_mask: '#/page/%s'
+	}
+	)
+	*/
 		)
 	)
 };

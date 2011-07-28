@@ -12,6 +12,8 @@ rr.styles('tmpl:page_compose'
 	, '.b-page_compose-saveToSend_inp {margin:0 3px 0 0;vertical-align:middle;}'
 	//, '.b-page_compose-saveToSend_text {}'
 
+	, '.b-page_compose-body {max-width:700px;}'
+
 
 
 	, '.b-page_compose-modes {}'
@@ -46,7 +48,7 @@ tmpl.compose_page = function(_, pr){
 
 			, head: 'none'
 			, head_name: "Новое письмо"
-			}
+		}
 
 		, _('ui:page_head'
 			 , _('tmpl:uToolbar'
@@ -57,9 +59,9 @@ tmpl.compose_page = function(_, pr){
 							first: 'right',
 							//icon: true, css_ico: 'b-icons b-icons--remove',
 							text: "Отменить"
-							})
-						]
-					}
+						})
+					]
+				}
 
 				, ns.wrap_sendMail = _('span.b-page_compose-wrap_send'
 					, ns.button_sendMail_dn = _('ui:uButton', {
@@ -67,14 +69,14 @@ tmpl.compose_page = function(_, pr){
 						icon: true, css_icon: 'i-img--send_mail',
 						title: "Отправить письмо",
 						text: "Отправить"
-						})
-					)
+					})
+				)
 
 				, ns.button_saveDraft = _('ui:uButton', {
 					text: "Сохранить в черновик"
-					})
-				)
+				})
 			)
+		)
 		, _('ui:page_footer'
 			, _('div', {style:'height:26px;'})
 			/*
@@ -119,35 +121,37 @@ tmpl.compose_page = function(_, pr){
 					* /
 				)
 				*/
-			)
+		)
 
 		, _('div.b-page_compose-body'
-			, _('tmpl:compose_headlines', {extend: ns})
+			, _('div.b-page_compose-body_edit'
+				, _('tmpl:compose_headlines', {extend: ns})
 
-			/*
-			, _('div.b-page_compose-modes_toolbar'
+				/*
+				, _('div.b-page_compose-modes_toolbar'
 
-				, _('div.b-page_compose-modes_pleft'
-					, _('a.b-page_compose-vkey'
-						, _('span.b-page_compose-vkey_text', "Виртуальная клавиатура")
+					, _('div.b-page_compose-modes_pleft'
+						, _('a.b-page_compose-vkey'
+							, _('span.b-page_compose-vkey_text', "Виртуальная клавиатура")
+							)
+						)
+
+					, _('span.b-page_compose-modes b-page_compose-mode--s-A'
+						, _('a.b-page_compose-mode b-page_compose-mode_A A', {title: "Обычный текст"}
+							, _('span.SA', "Просто текст")
+							)
+
+						, _('a.b-page_compose-mode b-page_compose-mode_B B', {title: "Текст с форматированием"}
+							, _('span.SB', "С оформлением")
+							)
 						)
 					)
+					*/
 
-				, _('span.b-page_compose-modes b-page_compose-mode--s-A'
-					, _('a.b-page_compose-mode b-page_compose-mode_A A', {title: "Обычный текст"}
-						, _('span.SA', "Просто текст")
-						)
-
-					, _('a.b-page_compose-mode b-page_compose-mode_B B', {title: "Текст с форматированием"}
-						, _('span.SB', "С оформлением")
-						)
-					)
+				, _('div.b-page_compose-text_body'
+					, ns.editor = _('ui:compose_editor', {name: 'text'})
 				)
-				*/
-
-			, _('div.b-page_compose-text_body'
-				, ns.editor = _('ui:compose_editor', {name: 'text'})
-				)
+			)
 
 			, _('div.b-page_compose-wrap_attachs'
 				, _('div.b-page_compose-attachs'
@@ -156,16 +160,16 @@ tmpl.compose_page = function(_, pr){
 						css_icon: 'i-img--attach_file',
 						icon: true,
 						text: "Прикрепить файлы..."
-						})
-					)
+					})
+				)
 
 
 				//, _.html("<h4>Прикреплённые файлы <small>(общим&nbsp;размером не&nbsp;более 20&nbsp;мб)</small></h4>")
 				//, _('h4', "Прикреплённые файлы ", _('small', "(общим размером не более 20 мб)"))
-				)
 			)
-		);
-	};
+		)
+	);
+};
 
 
 rr.styles('tmpl:compose_headlines'

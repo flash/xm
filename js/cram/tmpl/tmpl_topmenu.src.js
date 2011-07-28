@@ -102,17 +102,17 @@ tmpl.topmenu = function(_, prm){
 			*/
 
 		, _('div.b-topmenu-box b-topmenu-box--x4' // --x1 --x2 --x3 --x4 --x5 --x6
-			, ns.item_compose = _('tmpl:topmenu_item'
+			, ns.item_reader = _('tmpl:topmenu_item'
 				, {
-					text: "Написать письмо",
+					text: "Подписки",
 					title: "Создание нового письма",
-					href: '#/compose'
+					href: '#/reader'
 				}
 			)
 
 			, ns.item_mailbox = _('tmpl:topmenu_item'
 				, {
-					text: "Входящие",
+					text: "Почта",
 					title: "Проверить почту и перейти в папку «Входящие»",
 					href: '#/mailbox/inbox'
 				}
@@ -130,12 +130,13 @@ tmpl.topmenu = function(_, prm){
 				, {
 					//active: true,
 					rbox_show: true,
-					text: "Календарь",
-					title: "Календарь события",
+					text: "Настройки",
+					title: "Настройки",
 					href: '#/calendar'
 				}
 			)
 
+			/*
 			, _('div.b-topmenu-other_wrap'
 				, ns.item_settings = _('a.b-topmenu-other no_underline i-img--arrow_down'
 					, {
@@ -145,6 +146,7 @@ tmpl.topmenu = function(_, prm){
 					}
 				)
 			)
+			*/
 
 		)
 

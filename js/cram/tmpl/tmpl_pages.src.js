@@ -1,5 +1,5 @@
 rr.styles('tmpl:page'
-	, '.b-topline {background-color: #333333;height: 26px;left: 0;position: absolute;right: 0;top: 0;z-index: 2;line-height: 26px;font-size: 12px;padding: 0 15px}'
+	, '.b-topline {background-color: #333333;height: 26px;left: 0;z-index: 2;line-height: 26px;font-size: 12px;padding: 0 15px;}' //position: absolute;right: 0;top: 0;
 	, '.b-topline-box {max-width: 1050px;margin: 0 auto;text-align: right;}'
 	, '.b-topline-left {text-align: left;float:left;margin-left: 10px;}'
 	, '.b-topline-right {margin-right: 10px;}'
@@ -35,7 +35,7 @@ rr.styles('tmpl:page'
 	, '.b-page-capion {margin:10px 0;padding:0 10px 10px;min-height:300px;}'
 //, '.b-page-capion--head_top {margin-top:15px;}'
 
-	, '.b-page-bottom {padding:8px 15px 0;border-top:1px solid #989898;}'
+	, '.b-page-bottom {padding:8px 15px 0;}' //border-top:1px solid #989898;
 	, '.b-page-top--hide, .b-page-bottom--hide {display:none;}'
 
 
@@ -98,7 +98,7 @@ tmpl.mainframe = function (_, pr) {
 
 
 	ns.node = _('DocumentFragment' //'body'
-		, _('div.b-topline'
+		, _('div.b-topline#topline'
 			, _('div.b-topline-box'
 				, _('span.b-topline-left'
 					, _('a.b-topline-link', { href: '/' }
@@ -231,7 +231,7 @@ tmpl.page = function (_, pr) {
 			}
 		)
 
-		, ns.box_down = _('div.b-page-bottom b-page-bottom--hide i-grd i-grd--top')
+		, ns.box_down = _('div.b-page-bottom b-page-bottom--hide')
 	);
 };
 

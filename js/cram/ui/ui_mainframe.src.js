@@ -68,7 +68,7 @@ elems.mainframe = rr.new_class({
 
 			var cw = n.clientWidth
 			, pc = pc_pleft || rr.getRect(ns.pleft)
-			, h = Math.max(pc.bottom - pc.top, ui.window_height - (rr.getRect(ns.box).top + rr.getScrollTop(ns.pleft.ownerDocument)) - 50)
+			, h = Math.max(pc.bottom - pc.top, ui.window_height - (rr.getRect(ns.box).top + rr.getScrollTop(ns.pleft.ownerDocument)) - 100)
 			, clss = ''
 			, x, i;
 

@@ -17,6 +17,10 @@ elems.compose_page = rr.new_class({
 		ui.nodes = _.tmpl('tmpl:compose_page', {
 			});
 
+		ui.sidebar = _.tmpl('ui:sidebar_folders', {
+			data_folders: window._data_folders
+			});
+
 		ui.node = ui.nodes.node;
 		ui.box = ui.nodes.box;
 

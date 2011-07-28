@@ -62,7 +62,7 @@ rr.styles('tmpl:uButton'   // высота должна быть 24px
 	, '.b-ubutton--icon-none .b-ubutton-wrap {background-image:none !important;}'
 
 
-	, '.b-ubutton--icon-left .b-ubutton-text {margin-left: 21px;}'
+	, '.b-ubutton--icon-left .b-ubutton-text {margin-left: 22px;}'
 	, '.b-ubutton--icon-right .b-ubutton-text {margin-right:21px;}'
 	, '.b-ubutton--icon-only .b-ubutton-text {display:none;}'
 
