@@ -30,15 +30,15 @@ rr.styles('tmpl:page_compose'
 
 
 
-tmpl.compose_page = function(_, pr){
+tmpl.compose_page = function (_, pr) {
 	var ns = this;
 	ns.text_title = "Новое письмо";
 	ns.sidebar = 'mailbox';
 
 
-	ns.page = _('ui:page' 
+	ns.page = _('ui:page'
 		, {
-			  extend: ns
+			extend: ns
 			//, pid: 'mailbox'
 
 			, title: "Новое письмо"
@@ -59,6 +59,10 @@ tmpl.compose_page = function(_, pr){
 							first: 'right',
 							//icon: true, css_ico: 'b-icons b-icons--remove',
 							text: "Отменить"
+							, onclick: function () {
+								cram.cache_pageCompose = null;
+								cram.go('/mailbox/inbox');
+							}
 						})
 					]
 				}
@@ -78,78 +82,78 @@ tmpl.compose_page = function(_, pr){
 			)
 		)
 		, _('ui:page_footer'
-			, _('div', {style:'height:26px;'})
-			/*
-			, _('tmpl:uToolbar'
-				, {
-					css: "b-page_compose-toolbar_bottom",
-					right: [
-						ns.button_cancel_dn = _('ui:uButton', {
-							first: 'right',
-							//icon: true, css_ico: 'b-icons b-icons--remove',
-							text: "Отменить"
-							})
-						]
-					}
+			, _('div', { style: 'height:26px;' })
+	/*
+	, _('tmpl:uToolbar'
+	, {
+	css: "b-page_compose-toolbar_bottom",
+	right: [
+	ns.button_cancel_dn = _('ui:uButton', {
+	first: 'right',
+	//icon: true, css_ico: 'b-icons b-icons--remove',
+	text: "Отменить"
+	})
+	]
+	}
 
 
 
-				, ns.wrap_sendMail_dn = _('span.b-page_compose-wrap_send'
-					, ns.button_sendMail_dn = _('ui:uButton', {
-						first: true,
-						icon: true, css_icon: 'i-img--send_mail',
-						title: "Отправить письмо",
-						text: "Отправить"
-						})
-					)
+	, ns.wrap_sendMail_dn = _('span.b-page_compose-wrap_send'
+	, ns.button_sendMail_dn = _('ui:uButton', {
+	first: true,
+	icon: true, css_icon: 'i-img--send_mail',
+	title: "Отправить письмо",
+	text: "Отправить"
+	})
+	)
 
 
-				//, _.html("<label for="save-sent"><input type="checkbox" class="c_compose-save-copy checkbox" tabindex="8" checked="" name="save_sent" id="save-sent">Сохранить копию в папке «Отправленные»</label>")
+	//, _.html("<label for="save-sent"><input type="checkbox" class="c_compose-save-copy checkbox" tabindex="8" checked="" name="save_sent" id="save-sent">Сохранить копию в папке «Отправленные»</label>")
 
-				/ *
-				, _('label.b-page_compose-saveToSend b-page_compose-saveToSend--checked'
-					, {
-						onclick: function() {
-							var n = ns.input_saveToSend;
-							rr.css_set('b-page_compose-saveToSend--checked', this, n.checked);
-							}
-						}
+	/ *
+	, _('label.b-page_compose-saveToSend b-page_compose-saveToSend--checked'
+	, {
+	onclick: function() {
+	var n = ns.input_saveToSend;
+	rr.css_set('b-page_compose-saveToSend--checked', this, n.checked);
+	}
+	}
 
-					, ns.input_saveToSend = _('input.b-page_compose-saveToSend_inp', {type: 'checkbox', checked: true})
-					, _('span.text', "Сохранить копию в папке «Отправленные»")
-					)
-					* /
-				)
-				*/
+	, ns.input_saveToSend = _('input.b-page_compose-saveToSend_inp', {type: 'checkbox', checked: true})
+	, _('span.text', "Сохранить копию в папке «Отправленные»")
+	)
+	* /
+	)
+	*/
 		)
 
 		, _('div.b-page_compose-body'
 			, _('div.b-page_compose-body_edit'
-				, _('tmpl:compose_headlines', {extend: ns})
+				, _('tmpl:compose_headlines', { extend: ns })
 
-				/*
-				, _('div.b-page_compose-modes_toolbar'
+	/*
+	, _('div.b-page_compose-modes_toolbar'
 
-					, _('div.b-page_compose-modes_pleft'
-						, _('a.b-page_compose-vkey'
-							, _('span.b-page_compose-vkey_text', "Виртуальная клавиатура")
-							)
-						)
+	, _('div.b-page_compose-modes_pleft'
+	, _('a.b-page_compose-vkey'
+	, _('span.b-page_compose-vkey_text', "Виртуальная клавиатура")
+	)
+	)
 
-					, _('span.b-page_compose-modes b-page_compose-mode--s-A'
-						, _('a.b-page_compose-mode b-page_compose-mode_A A', {title: "Обычный текст"}
-							, _('span.SA', "Просто текст")
-							)
+	, _('span.b-page_compose-modes b-page_compose-mode--s-A'
+	, _('a.b-page_compose-mode b-page_compose-mode_A A', {title: "Обычный текст"}
+	, _('span.SA', "Просто текст")
+	)
 
-						, _('a.b-page_compose-mode b-page_compose-mode_B B', {title: "Текст с форматированием"}
-							, _('span.SB', "С оформлением")
-							)
-						)
-					)
-					*/
+	, _('a.b-page_compose-mode b-page_compose-mode_B B', {title: "Текст с форматированием"}
+	, _('span.SB', "С оформлением")
+	)
+	)
+	)
+	*/
 
 				, _('div.b-page_compose-text_body'
-					, ns.editor = _('ui:compose_editor', {name: 'text'})
+					, ns.editor = _('ui:compose_editor', { name: 'text' })
 				)
 			)
 
@@ -164,8 +168,8 @@ tmpl.compose_page = function(_, pr){
 				)
 
 
-				//, _.html("<h4>Прикреплённые файлы <small>(общим&nbsp;размером не&nbsp;более 20&nbsp;мб)</small></h4>")
-				//, _('h4', "Прикреплённые файлы ", _('small', "(общим размером не более 20 мб)"))
+	//, _.html("<h4>Прикреплённые файлы <small>(общим&nbsp;размером не&nbsp;более 20&nbsp;мб)</small></h4>")
+	//, _('h4', "Прикреплённые файлы ", _('small', "(общим размером не более 20 мб)"))
 			)
 		)
 	);
@@ -177,7 +181,7 @@ rr.styles('tmpl:compose_headlines'
 	, '.b-compose_headlines-title {position: absolute;left:0;color: #666666;}'
 	, '.b-compose_headlines-box {margin-left: 85px;}'
 	, '.b-compose_headlines-button {width:80px;vertical-align: top;}'
-	, '.b-compose_headlines-input {vertical-align: top;height: 24px;width:100%;-moz-box-sizing: border-box;box-sizing: border-box;line-height:1.2 !important;}'
+	, '.b-compose_headlines-input {vertical-align: top;height: 24px;width:100%;-moz-box-sizing: border-box;-webki-box-sizing: border-box;box-sizing: border-box;line-height:1.2 !important;}'
 
 	, '.b-compose_headlines-row--other {display:none;}'
 	, '.b-compose_headlines-button {background-color:#e2e2e2;}'

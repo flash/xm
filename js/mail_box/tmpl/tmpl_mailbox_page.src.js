@@ -341,6 +341,8 @@ rr.styles('tmpl:maibox_row'
 	, '.b-mbox_row-attach {cursor: default;visibility: hidden;right:120px; top:5px; width:20px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
 	, '.b-mbox_row-date {cursor: pointer;text-align: right;right: 30px; top:4px; width: 82px; height:22px;line-height:22px;padding-right:3px;color:#000 !important;}'
 	, '.b-mbox_row-favorite {cursor: pointer;right:3px; top:5px; width:16px;height:20px;background-position: 50% 50%;background-repeat: no-repeat;}'
+	, '.b-mbox_row-replied {pointer-events:none;cursor: default;left:41px; top:16px; width:10px;height:10px;background-position: 50% 50%;background-repeat: no-repeat;position: absolute;overflow: hidden;}'
+	, '.b-mbox_row-replied--hide {display:none;}'
 
 	, '.b-mbox_row-date:hover {background-color:#E4E4E4;border-radius: 2px;}'
 	, '.b-mbox_row--selected .b-mbox_row-date:hover {background-color:#B6cccc;}'
@@ -409,16 +411,6 @@ tmpl.mailbox_listRow = function (_, p) {
 			}
 		)
 
-		, ns.favorite_link = _('a.b-mbox_row-favorite b-mbox_row-ap'
-			, {
-				css: p.favorite ? 'i-img--mail_marked' : 'i-img--mail_marked-not'
-				, onclick: function () {
-					var x = rr.css_flip('b-mbox_row--favorite', ns.node);
-					rr.css_switch(['i-img--mail_marked', 'i-img--mail_marked-not'], ns.favorite_link, x ? 0 : 1)
-				}
-			}
-		)
-
 		, ns.read_link = _('a.b-mbox_row-read b-mbox_row-ap'
 			, {
 				css: p.unread ? 'i-img--mail_unread' : 'i-img--mail_read',
@@ -428,6 +420,15 @@ tmpl.mailbox_listRow = function (_, p) {
 				}
 			}
 		)
+
+		
+		/*
+		, _('span.b-mbox_row-replied i-img--mail_replied' + (Math.random() > 0.05 ? ' b-mbox_row-replied--hide' : '')
+			, {
+				title: "Отвечено"
+			}
+		)
+		*/
 
 	//, _('span.b-mbox_row-content'
 		, _('a.b-mbox_row-link no_underline' + (p.icon_domain ? ' b-mbox_row-link--icon_domain' : '')
@@ -459,10 +460,20 @@ tmpl.mailbox_listRow = function (_, p) {
 		, _('a.b-mbox_row-date b-mbox_row-ap no_underline'
 			, {
 				title: 'Фильтр от этого письма',
-				href: '#/mailbox/inbox/n'+p.id
+				href: '#/mailbox/inbox/n' + p.id
 				//href: '#/mailbox:date=201107260812/INBOX'
-				}
+			}
 			, _.text(p.date)
+		)
+
+		, ns.favorite_link = _('a.b-mbox_row-favorite b-mbox_row-ap'
+			, {
+				css: p.favorite ? 'i-img--mail_marked' : 'i-img--mail_marked-not'
+				, onclick: function () {
+					var x = rr.css_flip('b-mbox_row--favorite', ns.node);
+					rr.css_switch(['i-img--mail_marked', 'i-img--mail_marked-not'], ns.favorite_link, x ? 0 : 1)
+				}
+			}
 		)
 	);
 };

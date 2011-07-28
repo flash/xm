@@ -36,7 +36,8 @@ elems.compose_page = rr.new_class({
 		on_connect: function() {
 			var ui = this;
 
-			if (ui.display = ui.is_connected) {				ui.nodes.editor.is_connected = true;
+			if (ui.display = ui.is_connected) {
+				ui.nodes.editor.is_connected = true;
 				ui.nodes.editor.on_connect();
 				};
 			}

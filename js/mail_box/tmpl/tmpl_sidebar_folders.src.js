@@ -1,7 +1,7 @@
 
 rr.styles('tmpl:d'
 	, '.b-sidebar_folders-tools {margin-top:3px;}' //text-align: center; padding-left: 5px;
-	, '.b-sidebar_folders-compose .b-umenu_item-text {margin-left:10px;font-weight: bold;}'
+	, '.b-sidebar_folders-compose .b-umenu_item-text {margin-left:7px;font-weight: bold;}'
 	, '.b-sidebar_folders-folders {margin-top:15px;}'
 	, '.b-sidebar_folders-more {background-position: 100% 50%;color: #575757 !important;margin-left: 0px;padding: 1px 20px 1px 5px;}'
 	, '.b-sidebar_folders-more:hover {color: #000 !important;}'
@@ -82,7 +82,7 @@ tmpl.sidebar_folders = function (_, p) {
 				, {
 					css: 'b-menu_sidebar_folders'
 					, position: 'left' //'right/left',
-					, open: 'click' //auto|click|hover
+					, open: 'auto' //auto|click|hover
 					//, debug: true
 
 					, node: 

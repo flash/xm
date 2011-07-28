@@ -17,15 +17,19 @@ cram.addEvent('open_page', function(e) {
 	});
 
 
+cram.cache_pageCompose
 
-cram.open_compose = function(e) {
-	var page = domMaster.tmpl('ui:compose_page', false);
-	page.pg_name = 'compose';
+cram.open_compose = function (e) {
+	var page = domMaster.tmpl('ui:compose_page', false) || cram.cache_pageCompose;
+	if (!page) {
+		page = domMaster.tmpl('ui:compose_page', false);
+		cram.cache_pageCompose = page;
+		//page.pg_name = 'compose';
+	};
+
 
 	cram.page_connect(page, e);
-
-	//console.dir(cram.getFormParams(page.form))
-	};
+};
 
 
 

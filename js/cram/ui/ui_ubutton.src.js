@@ -14,6 +14,7 @@ elems.uButton = rr.new_class({	interface: false,
 		if (pr.index_icon > 0) ui.index_icon = pr.index_icon;
 		if (pr.index_text > 0) ui.index_text = pr.index_text;
 		if (pr.index_title > 0) ui.index_title = pr.index_title;
+		if (typeof pr.onclick == 'function') ui.onclick = pr.onclick;
 
 		if (pr.active) ui.active = true ;
 
